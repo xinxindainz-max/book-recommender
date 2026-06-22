@@ -14,75 +14,79 @@
 html{font-size:16px}
 body{
   font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-  background:#F7F8FA;color:#1a1d28;max-width:480px;margin:0 auto;padding:32px 20px 48px;
-  line-height:1.6;-webkit-tap-highlight-color:transparent;
+  background:#FBFBFD;color:#1D1D1F;max-width:480px;margin:0 auto;
+  padding:48px 24px 56px;line-height:1.5;
+  -webkit-tap-highlight-color:transparent;
   -webkit-font-smoothing:antialiased;
 }
 
-/* ——— 标题 ——— */
-.hed{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"STSong",serif}
-.hed h1{font-size:28px;font-weight:700;letter-spacing:-.5px;line-height:1.2;margin-bottom:6px}
-.hed p{font-size:14px;color:#6b7187;font-family:-apple-system,"PingFang SC",sans-serif}
+/* ——— Hero ——— */
+.hero{margin-bottom:40px}
+.hero h1{font-size:34px;font-weight:700;letter-spacing:-.8px;line-height:1.15;margin-bottom:8px}
+.hero p{font-size:16px;color:#86868B;font-weight:400;letter-spacing:-.2px}
 
-/* ——— 选择区 ——— */
-.sec{margin-top:28px}
-.sec-label{font-size:11px;color:#8b91a3;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+/* ——— Section ——— */
+.sec{margin-bottom:32px}
+.sec-label{font-size:13px;color:#86868B;font-weight:500;letter-spacing:0;margin-bottom:12px}
 .pills{display:flex;flex-wrap:wrap;gap:8px}
 .pill{
-  padding:8px 18px;border-radius:22px;font-size:14px;
-  border:1px solid #dde0e8;background:#fff;color:#1a1d28;
-  cursor:pointer;transition:all .15s;user-select:none;
-  font-family:inherit;
+  padding:9px 20px;border-radius:20px;font-size:14px;font-weight:500;
+  background:#F2F2F7;color:#1D1D1F;border:none;
+  cursor:pointer;transition:all .18s ease;user-select:none;
+  letter-spacing:-.2px;
 }
 .pill:active{transform:scale(.96)}
-.pill.on{background:#1a1d28;color:#fff;border-color:#1a1d28}
+.pill.on{background:#1D1D1F;color:#FBFBFD}
 
-/* ——— 卡片 ——— */
-.cards{margin-top:24px;display:flex;flex-direction:column;gap:12px}
+/* ——— Cards ——— */
+.cards{margin-top:36px;display:flex;flex-direction:column;gap:16px}
 .card{
-  background:#fff;border-radius:14px;padding:20px;
-  box-shadow:0 1px 2px rgba(0,0,0,.04),0 2px 8px rgba(0,0,0,.03);
-  border:1px solid #eef0f5;
+  background:#FFFFFF;border-radius:16px;padding:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.03);
+  transition:opacity .35s ease,transform .35s ease;
 }
-.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
-.card h3{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"STSong",serif;font-size:17px;font-weight:700;line-height:1.3}
-.card .tag{font-size:11px;background:#f0f2f8;color:#6b7187;padding:3px 10px;border-radius:4px;white-space:nowrap;font-family:inherit}
-.card .meta{font-size:13px;color:#6b7187;margin-bottom:10px}
-.card .reason{font-size:13px;color:#4a5064;line-height:1.6;margin-bottom:14px;padding-left:12px;border-left:2px solid #c43e2c}
-.card .acts{display:flex;gap:8px}
-.btn{flex:1;padding:9px 0;border-radius:8px;font-size:13px;text-align:center;cursor:pointer;border:none;
-  transition:all .15s;user-select:none;font-family:inherit;}
+.card.fade-in{animation:fadeUp .4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px}
+.card h3{font-size:19px;font-weight:600;letter-spacing:-.3px;line-height:1.3}
+.card .score{font-size:13px;font-weight:500;color:#E8533F;background:#FFF5F3;padding:3px 10px;border-radius:12px;white-space:nowrap}
+.card .meta{font-size:14px;color:#86868B;margin-bottom:12px;letter-spacing:-.1px}
+.card .reason{font-size:14px;color:#515154;line-height:1.65;margin-bottom:16px;padding-left:14px;border-left:2.5px solid #E8533F}
+.card .acts{display:flex;gap:10px}
+.btn{flex:1;padding:11px 0;border-radius:12px;font-size:14px;font-weight:500;text-align:center;
+  cursor:pointer;border:none;transition:all .15s ease;user-select:none;letter-spacing:-.2px}
 .btn:active{transform:scale(.97)}
-.btn-skip{background:#1a1d28;color:#fff}
-.btn-mark{background:#f0f2f8;color:#4a5064}
-.btn-mark.done{background:#e8f5e9;color:#2e7d32}
+.btn-skip{background:#1D1D1F;color:#FBFBFD}
+.btn-mark{background:#F2F2F7;color:#515154}
+.btn-mark.done{background:#E8F5E9;color:#2E7D32}
 
-/* ——— 空态 ——— */
-.empty{text-align:center;padding:48px 16px;color:#8b91a3;font-size:14px}
-.empty b{color:#1a1d28}
+/* ——— Empty ——— */
+.empty{text-align:center;padding:56px 16px;color:#86868B;font-size:15px;line-height:1.7}
+.empty b{color:#1D1D1F;font-weight:600}
 
-/* ——— toast ——— */
-.toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);background:#1a1d28;color:#fff;
-  padding:10px 24px;border-radius:20px;font-size:13px;z-index:99;opacity:0;transition:opacity .25s;pointer-events:none}
+/* ——— Toast ——— */
+.toast{position:fixed;top:28px;left:50%;transform:translateX(-50%);background:#1D1D1F;color:#FBFBFD;
+  padding:11px 28px;border-radius:24px;font-size:14px;font-weight:500;z-index:99;
+  opacity:0;transition:opacity .25s;pointer-events:none;letter-spacing:-.2px}
 .toast.show{opacity:1}
 
-/* ——— 阶段指标 ——— */
-.stages{display:flex;justify-content:space-between;margin-top:32px;padding-top:24px;
-  border-top:1px solid #e6e9f0;gap:4px}
+/* ——— Stage indicator ——— */
+.stages{display:flex;margin-top:44px;padding-top:28px;border-top:1px solid #E5E5EA}
 .stage{flex:1;text-align:center}
-.stage-dot{width:8px;height:8px;border-radius:50%;margin:0 auto 6px}
-.stage:nth-child(1) .stage-dot{background:#cbd5e1}
-.stage:nth-child(2) .stage-dot{background:#94a3b8}
-.stage:nth-child(3) .stage-dot{background:#64748b}
-.stage:nth-child(4) .stage-dot{background:#1a1d28}
-.stage-name{font-size:11px;color:#8b91a3;font-family:inherit}
+.stage-bar{height:4px;border-radius:2px;margin:0 4px 8px}
+.stage:nth-child(1) .stage-bar{background:#E5E5EA}
+.stage:nth-child(2) .stage-bar{background:#C7C7CC}
+.stage:nth-child(3) .stage-bar{background:#8E8E93}
+.stage:nth-child(4) .stage-bar{background:#1D1D1F}
+.stage-label{font-size:12px;color:#8E8E93;font-weight:500}
 </style>
 </head>
 <body>
 
-<header class="hed">
+<header class="hero">
   <h1>下一本，<br>读什么？</h1>
-  <p>按认知问题组织，不是按学科分类</p>
+  <p>按认知问题组织，不按学科分类</p>
 </header>
 
 <div class="sec">
@@ -92,84 +96,120 @@ body{
 
 <div class="sec">
   <div class="sec-label">阅读阶段</div>
-  <div class="pills" id="scenes"></div>
+  <div class="pills" id="stages"></div>
 </div>
 
 <div class="cards" id="results"></div>
-
 <div class="toast" id="toast"></div>
 
 <footer class="stages">
-  <div class="stage"><div class="stage-dot"></div><div class="stage-name">搭建世界观</div></div>
-  <div class="stage"><div class="stage-dot"></div><div class="stage-name">提升能力</div></div>
-  <div class="stage"><div class="stage-dot"></div><div class="stage-name">深入学科</div></div>
-  <div class="stage"><div class="stage-dot"></div><div class="stage-name">文明探索</div></div>
+  <div class="stage"><div class="stage-bar"></div><div class="stage-label">搭建世界观</div></div>
+  <div class="stage"><div class="stage-bar"></div><div class="stage-label">提升能力</div></div>
+  <div class="stage"><div class="stage-bar"></div><div class="stage-label">深入学科</div></div>
+  <div class="stage"><div class="stage-bar"></div><div class="stage-label">文明探索</div></div>
 </footer>
 
+<script src="books-data.js"></script>
 <script>
-const CATS = ['文学·世界经典','中国古典与思想','哲学','历史与文明','经济与商业','心理学与行为','科学','社会与政治'];
+// ========== 数据 & 映射 ==========
+const CAT_MAP = {
+  '文学':'文学','科幻':'科幻','历史':'历史','哲学':'哲学',
+  '经济':'经济','心理学':'心理学','科学':'科学','扩展':'综合'
+};
+const DIFF_MAP = {1:'入门',2:'入门',3:'进阶',4:'深耕',5:'通识'};
+
+const CATS = [...new Set(BOOKS.map(b=>CAT_MAP[b[2]]||b[2]))];
 const STAGES = ['入门','进阶','深耕','通识'];
 
+// ========== 状态 ==========
 let selCat = null, selStage = null;
-const readIds = new Set(JSON.parse(localStorage.getItem('readBooks')||'[]'));
+const readIds = new Set(JSON.parse(localStorage.getItem('rb2')||'[]'));
 
+// ========== 渲染 ==========
 function renderPills(ctr, items, sel){
   ctr.innerHTML = items.map(v=>`<span class="pill${sel===v?' on':''}" data-v="${v}">${v}</span>`).join('');
 }
 
-function renderPlaceholder(){
+function renderResults(){
   const c = document.getElementById('results');
-  const n = selCat||selStage ? 3 : 0;
-  const demo = [
-    {t:'示例书目',a:'作者 · 领域',r:'选择领域和阶段后，这里会显示匹配的书。每本书都有豆瓣评分和为什么值得读——不是抄简介，是真读过的判断。',score:'9.2'},
-    {t:'第二本书',a:'另一位作者 · 领域',r:'认知成长不是囤书单。这里的每一条推荐都在回答同一个问题：读完这本，你的认知会往哪个方向移动。',score:'8.7'},
-    {t:'第三本书',a:'第三位作者 · 领域',r:'你可以标记"读过"或"跳过"。跳过的不会消失——只是退到后面，等你准备好了再出现。',score:'8.3'}
-  ];
-  if(!n){c.innerHTML='<div class="empty">选择领域和阶段后<br>这里会出现三本推荐</div>';return}
-  c.innerHTML = demo.slice(0,n).map((b,i)=>`
-    <div class="card">
-      <div class="card-top"><h3>${b.t}</h3><span class="tag">豆瓣 ${b.score}</span></div>
-      <div class="meta">${b.a}</div>
-      <div class="reason">${b.r}</div>
-      <div class="acts">
-        <button class="btn btn-mark${readIds.has(i)?' done':''}" data-id="${i}">${readIds.has(i)?'✓ 已读':'读过了'}</button>
-        <button class="btn btn-skip" data-id="${i}">跳过</button>
-      </div>
-    </div>
-  `).join('');
-  c.querySelectorAll('.btn-mark').forEach(b=>b.onclick=()=>{
-    const id=parseInt(b.dataset.id);readIds.add(id);
-    localStorage.setItem('readBooks',JSON.stringify([...readIds]));
-    toast('标记已读');renderPlaceholder();
+  let pool = BOOKS.map((b,i)=>({i,...b})).filter(b=>{
+    const catLabel = CAT_MAP[b[2]]||b[2];
+    if(selCat && catLabel!==selCat) return false;
+    if(selStage){
+      const diffLabel = DIFF_MAP[b[4]]||'进阶';
+      if(diffLabel!==selStage) return false;
+    }
+    return true;
   });
-  c.querySelectorAll('.btn-skip').forEach(b=>b.onclick=()=>{
-    const id=parseInt(b.dataset.id);readIds.add(id);
-    localStorage.setItem('readBooks',JSON.stringify([...readIds]));
-    toast('已跳过');renderPlaceholder();
+  if(!pool.length){pool=BOOKS.map((b,i)=>({i,...b}));} // fallback
+  let candidates = pool.filter(b=>!readIds.has(b.i));
+  if(!candidates.length) candidates = pool;
+  // 随机取3，优先高分
+  candidates.sort((a,b)=>b[3]-a[3]||Math.random()-.5);
+  const top = candidates.slice(0,3);
+
+  if(!top.length){
+    c.innerHTML='<div class="empty"><b>没有匹配的书</b><br>换个条件试试</div>';
+    return;
+  }
+  c.innerHTML = top.map((b,idx)=>{
+    const catLabel = CAT_MAP[b[2]]||b[2];
+    const diffLabel = DIFF_MAP[b[4]]||'进阶';
+    const reason = b[5]>=5
+      ? '这个领域的基石之作。不读这本，对整个领域的理解会缺一个角。'
+      : b[3]>=9.0
+        ? `豆瓣 ${b[3]} 分，读者用脚投票的选择。经得起时间考验。`
+        : `难度 ${b[4]}/5 · 值得花时间的一本。读懂它，认知会往深处挪一步。`;
+    return `<div class="card fade-in" style="animation-delay:${idx*0.08}s">
+      <div class="card-head"><h3>${b[0]}</h3><span class="score">★ ${b[3]}</span></div>
+      <div class="meta">${b[1]} · ${catLabel} · ${diffLabel}</div>
+      <div class="reason">${reason}</div>
+      <div class="acts">
+        <button class="btn btn-mark${readIds.has(b.i)?' done':''}" data-id="${b.i}">${readIds.has(b.i)?'✓ 已读':'读过了'}</button>
+        <button class="btn btn-skip" data-id="${b.i}">跳过</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  // 事件绑定
+  c.querySelectorAll('.btn-mark').forEach(btn=>{
+    btn.onclick=()=>{
+      const id=parseInt(btn.dataset.id);readIds.add(id);
+      localStorage.setItem('rb2',JSON.stringify([...readIds]));
+      toast('已标记 ✓');renderResults();
+    };
+  });
+  c.querySelectorAll('.btn-skip').forEach(btn=>{
+    btn.onclick=()=>{
+      const id=parseInt(btn.dataset.id);readIds.add(id);
+      localStorage.setItem('rb2',JSON.stringify([...readIds]));
+      toast('已跳过 →');renderResults();
+    };
   });
 }
 
 function toast(m){
   const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');
-  clearTimeout(t._tid);t._tid=setTimeout(()=>t.classList.remove('show'),1500);
+  clearTimeout(t._tid);t._tid=setTimeout(()=>t.classList.remove('show'),1600);
 }
 
+// ========== 初始化 ==========
 document.getElementById('cats').onclick=e=>{
   if(!e.target.classList.contains('pill'))return;
-  selCat = selCat===e.target.dataset.v ? null : e.target.dataset.v;
+  selCat=selCat===e.target.dataset.v?null:e.target.dataset.v;
   renderPills(document.getElementById('cats'),CATS,selCat);
-  renderPlaceholder();
+  renderResults();
 };
-document.getElementById('scenes').onclick=e=>{
+document.getElementById('stages').onclick=e=>{
   if(!e.target.classList.contains('pill'))return;
-  selStage = selStage===e.target.dataset.v ? null : e.target.dataset.v;
-  renderPills(document.getElementById('scenes'),STAGES,selStage);
-  renderPlaceholder();
+  selStage=selStage===e.target.dataset.v?null:e.target.dataset.v;
+  renderPills(document.getElementById('stages'),STAGES,selStage);
+  renderResults();
 };
 
 renderPills(document.getElementById('cats'),CATS,selCat);
-renderPills(document.getElementById('scenes'),STAGES,selStage);
-renderPlaceholder();
+renderPills(document.getElementById('stages'),STAGES,selStage);
+renderResults();
 </script>
 </body>
 </html>
