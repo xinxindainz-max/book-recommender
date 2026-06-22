@@ -5,175 +5,171 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="戴欣荐书">
+<meta name="apple-mobile-web-app-title" content="戴欣的认知书架">
 <link rel="apple-touch-icon" href="icon.svg">
 <link rel="manifest" href="manifest.json">
-<title>戴欣的读书推荐</title>
+<title>戴欣的认知书架</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;background:#F8F6F2;color:#1C1917;max-width:480px;margin:0 auto;padding:20px 16px 40px;line-height:1.6;-webkit-tap-highlight-color:transparent}
-h1{font-size:22px;font-weight:700;letter-spacing:.5px}
-.sub{font-size:13px;color:#8B8580;margin:4px 0 20px}
-.section{margin-bottom:20px}
-.label{font-size:12px;color:#8B8580;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+html{font-size:16px}
+body{
+  font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:#F7F8FA;color:#1a1d28;max-width:480px;margin:0 auto;padding:32px 20px 48px;
+  line-height:1.6;-webkit-tap-highlight-color:transparent;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ——— 标题 ——— */
+.hed{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"STSong",serif}
+.hed h1{font-size:28px;font-weight:700;letter-spacing:-.5px;line-height:1.2;margin-bottom:6px}
+.hed p{font-size:14px;color:#6b7187;font-family:-apple-system,"PingFang SC",sans-serif}
+
+/* ——— 选择区 ——— */
+.sec{margin-top:28px}
+.sec-label{font-size:11px;color:#8b91a3;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
 .pills{display:flex;flex-wrap:wrap;gap:8px}
-.pill{padding:8px 16px;border-radius:20px;font-size:14px;border:1px solid #D9D4CD;background:#fff;cursor:pointer;transition:all .15s;user-select:none}
+.pill{
+  padding:8px 18px;border-radius:22px;font-size:14px;
+  border:1px solid #dde0e8;background:#fff;color:#1a1d28;
+  cursor:pointer;transition:all .15s;user-select:none;
+  font-family:inherit;
+}
 .pill:active{transform:scale(.96)}
-.pill.on{background:#1C1917;color:#fff;border-color:#1C1917}
-.cards{display:flex;flex-direction:column;gap:12px}
-.card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);position:relative}
-.card h3{font-size:17px;font-weight:700;margin-bottom:4px}
-.card .meta{font-size:13px;color:#6B6560;margin-bottom:8px}
-.card .score{display:inline-block;background:#F8F6F2;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600;color:#B8402C;margin-left:6px}
-.card .reason{font-size:13px;color:#4A4540;line-height:1.5;margin-bottom:12px;padding-left:8px;border-left:3px solid #B8402C}
-.card .actions{display:flex;gap:8px}
-.btn{flex:1;padding:8px 0;border-radius:8px;font-size:13px;text-align:center;cursor:pointer;border:none;transition:all .15s;user-select:none}
+.pill.on{background:#1a1d28;color:#fff;border-color:#1a1d28}
+
+/* ——— 卡片 ——— */
+.cards{margin-top:24px;display:flex;flex-direction:column;gap:12px}
+.card{
+  background:#fff;border-radius:14px;padding:20px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 2px 8px rgba(0,0,0,.03);
+  border:1px solid #eef0f5;
+}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.card h3{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"STSong",serif;font-size:17px;font-weight:700;line-height:1.3}
+.card .tag{font-size:11px;background:#f0f2f8;color:#6b7187;padding:3px 10px;border-radius:4px;white-space:nowrap;font-family:inherit}
+.card .meta{font-size:13px;color:#6b7187;margin-bottom:10px}
+.card .reason{font-size:13px;color:#4a5064;line-height:1.6;margin-bottom:14px;padding-left:12px;border-left:2px solid #c43e2c}
+.card .acts{display:flex;gap:8px}
+.btn{flex:1;padding:9px 0;border-radius:8px;font-size:13px;text-align:center;cursor:pointer;border:none;
+  transition:all .15s;user-select:none;font-family:inherit;}
 .btn:active{transform:scale(.97)}
-.btn-read{background:#F0EDE8;color:#4A4540}
-.btn-read.done{background:#E8F5E9;color:#2E7D32}
-.btn-skip{background:#1C1917;color:#fff}
-.empty{text-align:center;padding:40px 16px;color:#8B8580;font-size:14px}
-.empty strong{color:#1C1917}
-.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#1C1917;color:#fff;padding:10px 24px;border-radius:20px;font-size:13px;z-index:99;opacity:0;transition:opacity .3s}
+.btn-skip{background:#1a1d28;color:#fff}
+.btn-mark{background:#f0f2f8;color:#4a5064}
+.btn-mark.done{background:#e8f5e9;color:#2e7d32}
+
+/* ——— 空态 ——— */
+.empty{text-align:center;padding:48px 16px;color:#8b91a3;font-size:14px}
+.empty b{color:#1a1d28}
+
+/* ——— toast ——— */
+.toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);background:#1a1d28;color:#fff;
+  padding:10px 24px;border-radius:20px;font-size:13px;z-index:99;opacity:0;transition:opacity .25s;pointer-events:none}
 .toast.show{opacity:1}
+
+/* ——— 阶段指标 ——— */
+.stages{display:flex;justify-content:space-between;margin-top:32px;padding-top:24px;
+  border-top:1px solid #e6e9f0;gap:4px}
+.stage{flex:1;text-align:center}
+.stage-dot{width:8px;height:8px;border-radius:50%;margin:0 auto 6px}
+.stage:nth-child(1) .stage-dot{background:#cbd5e1}
+.stage:nth-child(2) .stage-dot{background:#94a3b8}
+.stage:nth-child(3) .stage-dot{background:#64748b}
+.stage:nth-child(4) .stage-dot{background:#1a1d28}
+.stage-name{font-size:11px;color:#8b91a3;font-family:inherit}
 </style>
 </head>
 <body>
 
-<h1>📚 戴欣的读书推荐</h1>
-<p class="sub">选你想要的，给你三本最合适的</p>
+<header class="hed">
+  <h1>下一本，<br>读什么？</h1>
+  <p>按认知问题组织，不是按学科分类</p>
+</header>
 
-<div class="section">
-  <div class="label">领域</div>
-  <div class="pills" id="categories"></div>
+<div class="sec">
+  <div class="sec-label">认知领域</div>
+  <div class="pills" id="cats"></div>
 </div>
 
-<div class="section">
-  <div class="label">目的</div>
+<div class="sec">
+  <div class="sec-label">阅读阶段</div>
   <div class="pills" id="scenes"></div>
 </div>
 
-<div class="section">
-  <div class="label">推荐</div>
-  <div class="cards" id="results"></div>
-</div>
+<div class="cards" id="results"></div>
 
 <div class="toast" id="toast"></div>
 
+<footer class="stages">
+  <div class="stage"><div class="stage-dot"></div><div class="stage-name">搭建世界观</div></div>
+  <div class="stage"><div class="stage-dot"></div><div class="stage-name">提升能力</div></div>
+  <div class="stage"><div class="stage-dot"></div><div class="stage-name">深入学科</div></div>
+  <div class="stage"><div class="stage-dot"></div><div class="stage-name">文明探索</div></div>
+</footer>
+
 <script>
-// ========== 示例书库 ==========
-const BOOKS = [
-  {id:1,title:'穷查理宝典',author:'彼得·考夫曼',score:9.0,cat:'理财',scene:'入门',reason:'不是教你怎么赚钱，是教你怎么不犯傻——芒格一辈子踩过的坑，比任何成功学都有用。'},
-  {id:2,title:'聪明的投资者',author:'本杰明·格雷厄姆',score:8.9,cat:'理财',scene:'入门',reason:'价值投资的圣经。巴菲特说这本书改变了他一生，我读了三遍，每次都在该恐惧时贪婪。'},
-  {id:3,title:'巴菲特致股东的信',author:'沃伦·巴菲特',score:9.1,cat:'理财',scene:'进阶',reason:'原汁原味的巴菲特，比任何二手解读都值得读。看他怎么想、怎么说、怎么做。'},
-  {id:4,title:'投资中最简单的事',author:'邱国鹭',score:8.3,cat:'理财',scene:'入门',reason:'中国人写的价值投资入门，接地气、不装。适合想用中文思维理解投资的人。'},
-  {id:5,title:'思考，快与慢',author:'丹尼尔·卡尼曼',score:8.2,cat:'认知',scene:'入门',reason:'人类的脑子有多少 bug，这本书全列出来了。读完你会对自己更诚实。'},
-  {id:6,title:'原则',author:'瑞·达利欧',score:8.3,cat:'认知',scene:'进阶',reason:'一套可以抄作业的决策系统。不用全信，但"极度透明"那条够你用半辈子。'},
-  {id:7,title:'反脆弱',author:'纳西姆·塔勒布',score:8.0,cat:'认知',scene:'进阶',reason:'塔勒布嘴毒但脑子狠。这本书让你重新理解"稳定"——你以为的稳定，可能是最脆弱的。'},
-  {id:8,title:'人类简史',author:'尤瓦尔·赫拉利',score:9.1,cat:'历史',scene:'消遣',reason:'三小时读完七万年。不是为了学历史，是为了换个角度看"我们到底在干什么"。'},
-  {id:9,title:'万历十五年',author:'黄仁宇',score:8.9,cat:'历史',scene:'消遣',reason:'一本把明朝写活了的书。六个小人物的命运，讲透一个大帝国的衰败。中文写作的天花板。'},
-  {id:10,title:'高效能人士的七个习惯',author:'史蒂芬·柯维',score:8.5,cat:'成长',scene:'入门',reason:'别被书名骗了——这不是鸡汤，是一套能落地的生活操作系统。我用了十年。'},
-  {id:11,title:'被讨厌的勇气',author:'岸见一郎/古贺史健',score:8.6,cat:'成长',scene:'入门',reason:'阿德勒心理学用对话体讲，好读。核心就一句：你的不幸，是你自己选的。'},
-  {id:12,title:'枪炮、病菌与钢铁',author:'贾雷德·戴蒙德',score:8.8,cat:'历史',scene:'进阶',reason:'为什么是欧洲人征服了美洲而不是反过来？地理决定论最有力的一次论证。'},
-];
+const CATS = ['文学·世界经典','中国古典与思想','哲学','历史与文明','经济与商业','心理学与行为','科学','社会与政治'];
+const STAGES = ['入门','进阶','深耕','通识'];
 
-const CATS = [...new Set(BOOKS.map(b=>b.cat))];
-const SCENES = ['入门','进阶','转行','消遣'];
-
-// ========== 状态 ==========
-let selectedCat = null;
-let selectedScene = null;
+let selCat = null, selStage = null;
 const readIds = new Set(JSON.parse(localStorage.getItem('readBooks')||'[]'));
 
-// ========== 渲染 ==========
-function renderResults(){
-  const pool = BOOKS.filter(b=>{
-    if(selectedCat && b.cat!==selectedCat) return false;
-    if(selectedScene){
-      if(b.scene===selectedScene) return true;
-      if(selectedScene==='转行') return b.scene==='进阶'||b.scene==='入门';
-      return false;
-    }
-    return true;
-  });
-  // 跳过已读
-  let candidates = pool.filter(b=>!readIds.has(b.id));
-  if(!candidates.length) candidates = pool; // 全读过了就重新显示
-  // 随机取3本
-  const shuffled = candidates.sort(()=>Math.random()-.5);
-  const top = shuffled.slice(0,3);
+function renderPills(ctr, items, sel){
+  ctr.innerHTML = items.map(v=>`<span class="pill${sel===v?' on':''}" data-v="${v}">${v}</span>`).join('');
+}
 
-  const container = document.getElementById('results');
-  if(!top.length){
-    container.innerHTML = '<div class="empty"><strong>没有匹配的书</strong><br>换个条件试试，或者把你读过的清掉重新来</div>';
-    return;
-  }
-  container.innerHTML = top.map(b=>`
+function renderPlaceholder(){
+  const c = document.getElementById('results');
+  const n = selCat||selStage ? 3 : 0;
+  const demo = [
+    {t:'示例书目',a:'作者 · 领域',r:'选择领域和阶段后，这里会显示匹配的书。每本书都有豆瓣评分和为什么值得读——不是抄简介，是真读过的判断。',score:'9.2'},
+    {t:'第二本书',a:'另一位作者 · 领域',r:'认知成长不是囤书单。这里的每一条推荐都在回答同一个问题：读完这本，你的认知会往哪个方向移动。',score:'8.7'},
+    {t:'第三本书',a:'第三位作者 · 领域',r:'你可以标记"读过"或"跳过"。跳过的不会消失——只是退到后面，等你准备好了再出现。',score:'8.3'}
+  ];
+  if(!n){c.innerHTML='<div class="empty">选择领域和阶段后<br>这里会出现三本推荐</div>';return}
+  c.innerHTML = demo.slice(0,n).map((b,i)=>`
     <div class="card">
-      <h3>${b.title} <span class="score">豆瓣 ${b.score}</span></h3>
-      <div class="meta">${b.author} · ${b.cat} · ${b.scene}</div>
-      <div class="reason">${b.reason}</div>
-      <div class="actions">
-        <button class="btn btn-read${readIds.has(b.id)?' done':''}" data-id="${b.id}">${readIds.has(b.id)?'✓ 已读':'读过了'}</button>
-        <button class="btn btn-skip" data-id="${b.id}" style="display:${readIds.has(b.id)?'none':'block'}">下一本</button>
+      <div class="card-top"><h3>${b.t}</h3><span class="tag">豆瓣 ${b.score}</span></div>
+      <div class="meta">${b.a}</div>
+      <div class="reason">${b.r}</div>
+      <div class="acts">
+        <button class="btn btn-mark${readIds.has(i)?' done':''}" data-id="${i}">${readIds.has(i)?'✓ 已读':'读过了'}</button>
+        <button class="btn btn-skip" data-id="${i}">跳过</button>
       </div>
     </div>
   `).join('');
-
-  // 绑定事件
-  container.querySelectorAll('.btn-read').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const id = parseInt(btn.dataset.id);
-      readIds.add(id);
-      localStorage.setItem('readBooks',JSON.stringify([...readIds]));
-      toast('已标记 ✓');
-      renderResults();
-    });
+  c.querySelectorAll('.btn-mark').forEach(b=>b.onclick=()=>{
+    const id=parseInt(b.dataset.id);readIds.add(id);
+    localStorage.setItem('readBooks',JSON.stringify([...readIds]));
+    toast('标记已读');renderPlaceholder();
   });
-  container.querySelectorAll('.btn-skip').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const id = parseInt(btn.dataset.id);
-      readIds.add(id);
-      localStorage.setItem('readBooks',JSON.stringify([...readIds]));
-      toast('跳过，换一本 →');
-      renderResults();
-    });
+  c.querySelectorAll('.btn-skip').forEach(b=>b.onclick=()=>{
+    const id=parseInt(b.dataset.id);readIds.add(id);
+    localStorage.setItem('readBooks',JSON.stringify([...readIds]));
+    toast('已跳过');renderPlaceholder();
   });
 }
 
-function toast(msg){
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(t._tid);
-  t._tid = setTimeout(()=>t.classList.remove('show'),1500);
+function toast(m){
+  const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');
+  clearTimeout(t._tid);t._tid=setTimeout(()=>t.classList.remove('show'),1500);
 }
 
-// 简化：直接渲染
-document.getElementById('categories').addEventListener('click',function(e){
-  if(!e.target.classList.contains('pill')) return;
-  selectedCat = selectedCat===e.target.dataset.v ? null : e.target.dataset.v;
-  refreshUI();
-});
-document.getElementById('scenes').addEventListener('click',function(e){
-  if(!e.target.classList.contains('pill')) return;
-  selectedScene = selectedScene===e.target.dataset.v ? null : e.target.dataset.v;
-  refreshUI();
-});
+document.getElementById('cats').onclick=e=>{
+  if(!e.target.classList.contains('pill'))return;
+  selCat = selCat===e.target.dataset.v ? null : e.target.dataset.v;
+  renderPills(document.getElementById('cats'),CATS,selCat);
+  renderPlaceholder();
+};
+document.getElementById('scenes').onclick=e=>{
+  if(!e.target.classList.contains('pill'))return;
+  selStage = selStage===e.target.dataset.v ? null : e.target.dataset.v;
+  renderPills(document.getElementById('scenes'),STAGES,selStage);
+  renderPlaceholder();
+};
 
-function refreshUI(){
-  renderPills2(document.getElementById('categories'), CATS, selectedCat);
-  renderPills2(document.getElementById('scenes'), SCENES, selectedScene);
-  renderResults();
-}
-
-function renderPills2(container, items, selected){
-  container.innerHTML = items.map(i=>
-    `<span class="pill${selected===i?' on':''}" data-v="${i}">${i}</span>`
-  ).join('');
-}
-
-refreshUI();
+renderPills(document.getElementById('cats'),CATS,selCat);
+renderPills(document.getElementById('scenes'),STAGES,selStage);
+renderPlaceholder();
 </script>
 </body>
 </html>
