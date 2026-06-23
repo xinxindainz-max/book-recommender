@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<!-- v3 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
 <title>戴欣的私人书架</title>
@@ -11,31 +10,35 @@ html{font-size:16px}
 body{
   font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   background:#FBF9F4;color:#1C1917;max-width:480px;margin:0 auto;
-  padding:40px 24px 56px;line-height:1.6;
+  padding:44px 24px 56px;line-height:1.65;
   -webkit-tap-highlight-color:transparent;
   -webkit-font-smoothing:antialiased;
 }
 
-/* ====== 标题 ====== */
-.hed{margin-bottom:12px}
-.hed h1{font-family:"Noto Serif SC","Songti SC","STSong","SimSun",serif;font-size:30px;font-weight:700;letter-spacing:0;line-height:1.25}
-.hed .sub{font-size:14px;color:#5C554D;margin-top:6px}
+/* ====== 标题（加强排版） ====== */
+.hed{margin-bottom:16px}
+.hed h1{
+  font-family:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  font-size:32px;font-weight:700;letter-spacing:.04em;line-height:1.3;
+  word-break:keep-all;
+}
+.hed .sub{font-size:14px;color:#5C554D;margin-top:8px;letter-spacing:.02em}
 
-/* ====== 路径选择卡片（书脊式） ====== */
+/* ====== 路径卡片（书脊式） ====== */
 .path-list{display:flex;flex-direction:column;gap:10px;margin:28px 0}
 .path-card{display:flex;border-radius:3px;overflow:hidden;background:#FEFDFA;
   box-shadow:0 1px 2px rgba(0,0,0,.04),0 2px 6px rgba(0,0,0,.03);
   cursor:pointer;transition:all .2s ease;user-select:none;min-height:72px}
 .path-card:active{transform:translateX(3px);box-shadow:0 1px 4px rgba(0,0,0,.08)}
-.path-card.disabled{opacity:.45;cursor:default;pointer-events:none}
+.path-card.disabled{opacity:.4;cursor:default;pointer-events:none}
 .path-strip{width:6px;flex-shrink:0}
-.path-body{flex:1;padding:16px 20px;display:flex;flex-direction:column;justify-content:center}
-.path-body h3{font-family:"Noto Serif SC","Songti SC","STSong","SimSun",serif;font-size:18px;font-weight:600;letter-spacing:0}
-.path-body .desc{font-size:13px;color:#5C554D;margin-top:2px}
-.path-tag{font-size:11px;color:#8B8580;margin-top:4px}
+.path-body{flex:1;padding:18px 20px;display:flex;flex-direction:column;justify-content:center}
+.path-body h3{font-family:"Noto Serif SC","Songti SC","STSong","SimSun",serif;font-size:18px;font-weight:600;letter-spacing:.04em}
+.path-body .desc{font-size:13px;color:#5C554D;margin-top:3px}
+.path-tag{font-size:11px;color:#8B8580;margin-top:4px;letter-spacing:.02em}
 
-/* ====== 标尺书区域 ====== */
-.ruler-intro{font-size:14px;color:#5C554D;line-height:1.7;margin-bottom:20px}
+/* ====== 标尺书 ====== */
+.ruler-intro{font-size:14px;color:#5C554D;line-height:1.75;margin-bottom:20px}
 .ruler-intro strong{color:#1C1917}
 .ruler-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
 .ruler-item{display:flex;align-items:stretch;background:#FEFDFA;border-radius:3px;
@@ -50,7 +53,8 @@ body{
 .ruler-info{flex:1;min-width:0}
 .ruler-info .b-title{font-family:"Noto Serif SC","Songti SC","STSong","SimSun",serif;font-size:16px;font-weight:600}
 .ruler-info .b-author{font-size:12px;color:#8B8580}
-.ruler-diff{font-size:11px;color:#8B8580;white-space:nowrap}
+.ruler-diff{font-size:10px;color:#8B8580;white-space:nowrap;text-align:right}
+.ruler-diff span{display:block;font-size:9px;letter-spacing:.1em}
 
 .ruler-action{margin-bottom:24px}
 .ruler-hint{font-size:12px;color:#8B8580;text-align:center;margin-bottom:12px}
@@ -58,33 +62,33 @@ body{
 /* ====== 按钮 ====== */
 .btn{display:block;width:100%;padding:13px 0;border-radius:6px;font-size:15px;font-weight:600;
   text-align:center;cursor:pointer;border:none;transition:all .15s ease;user-select:none;
-  font-family:inherit;letter-spacing:.3px}
+  font-family:inherit;letter-spacing:.04em}
 .btn:active{transform:scale(.98)}
 .btn-primary{background:#1C1917;color:#FBF9F4}
 .btn-outline{background:transparent;color:#1C1917;border:1.5px solid #C7C0B8;margin-top:8px}
 
-/* ====== 推荐结果 ====== */
+/* ====== 推荐结果卡片（书脊式） ====== */
 .result-card{background:#FEFDFA;border-radius:3px;overflow:hidden;
   box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.04);margin-bottom:20px;
   animation:fadeUp .4s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .result-strip{height:6px}
 .result-body{padding:24px}
-.result-body h2{font-family:"Noto Serif SC","Songti SC","STSong","SimSun",serif;font-size:22px;font-weight:700;margin-bottom:4px}
+.result-body h2{font-family:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  font-size:23px;font-weight:700;margin-bottom:4px;letter-spacing:.04em;line-height:1.3}
 .result-body .meta{font-size:13px;color:#8B8580;margin-bottom:14px}
-.result-body .reason{font-size:14px;color:#3A3530;line-height:1.75;margin-bottom:20px;
-  padding-left:14px;border-left:2.5px solid #9B2D26}
+.result-body .reason{font-size:14px;color:#3A3530;line-height:1.8;margin-bottom:20px;
+  padding-left:14px;border-left:2.5px solid currentColor}
 .result-acts{display:flex;flex-direction:column;gap:8px}
-.level-badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 10px;border-radius:3px;
-  letter-spacing:.5px}
+.level-badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 10px;border-radius:3px;letter-spacing:.04em}
 .level-badge.l1{background:#F0EDE8;color:#6B5E4F}
 .level-badge.l2{background:#E8E2D9;color:#4A3F35}
 .level-badge.l3{background:#D4C8B8;color:#2A1F15}
 
-/* ====== 节奏控制（读后两个按钮） ====== */
+/* ====== 节奏控制 ====== */
 .pace-box{background:#FEFDFA;border-radius:3px;padding:20px 24px;
   box-shadow:0 1px 3px rgba(0,0,0,.04);margin-top:16px}
-.pace-box .pace-q{font-size:15px;font-weight:600;margin-bottom:14px}
+.pace-q{font-size:15px;font-weight:600;margin-bottom:14px}
 .pace-btns{display:flex;flex-direction:column;gap:8px}
 
 /* ====== 返回 ====== */
@@ -98,9 +102,6 @@ body{
   opacity:0;transition:opacity .25s;pointer-events:none}
 .toast.show{opacity:1}
 
-/* ====== 分割线 ====== */
-.divider{height:1px;background:#E8E4DB;margin:32px 0}
-
 /* ====== 空态 ====== */
 .done-msg{text-align:center;padding:32px 16px}
 .done-msg .icon{font-size:40px;margin-bottom:12px}
@@ -110,62 +111,141 @@ body{
 <body>
 
 <div class="hed"><h1>戴欣的<br>私人书架</h1><p class="sub">四条阅读路径，一人带路</p></div>
-
-<!-- 动态内容区 -->
 <div id="view"></div>
 <div class="toast" id="toast"></div>
 
 <script>
 // ============================================================
-// 数据：价值投资路径
+// 数据：四条认知路径
 // ============================================================
 const PATHS = {
-  'value': {
-    id:'value',
-    name:'价值投资',
-    desc:'正统巴芒派，从《小狗钱钱》到《证券分析》',
+  'value':{
+    id:'value', name:'价值投资', desc:'正统巴芒派，从《小狗钱钱》到《证券分析》',
     color:'#9B2D26',
-    label:'入门→进阶→硬核',
     rulerBooks:[
       {id:'vr1',title:'小狗钱钱',author:'博多·舍费尔',diff:1,
-        reason:'用故事讲钱，小孩都能看懂。读完你会开始想"我的钱现在在干什么"。'},
+        reason:'用故事讲钱，小孩都能看懂。读完你会开始想"我的钱现在在干什么"——这个念头比任何理财技巧都值钱。'},
       {id:'vr2',title:'富爸爸穷爸爸',author:'罗伯特·清崎',diff:1,
-        reason:'换一个脑子想钱。资产vs负债那一章就值回时间——很多人一辈子分不清这两样。'},
+        reason:'换一个脑子想钱。资产vs负债那一章就值回时间——很多人一辈子都分不清自己在买资产还是在买负债。'},
       {id:'vr3',title:'投资中最简单的事',author:'邱国鹭',diff:2,
-        reason:'中国人写的最干净的价值投资入门。接地气，没一句黑话。读完你知道买股票到底在买什么。'},
+        reason:'中国人写的最干净的价值投资入门。接地气，没一句黑话。读完你会知道买股票到底在买什么——答案不是你想象的那样。'},
       {id:'vr4',title:'聪明的投资者',author:'本杰明·格雷厄姆',diff:3,
-        reason:'巴菲特的老师写的。不用全读，第八章"市场先生"和第20章够你用一辈子。比《证券分析》好读太多。'},
+        reason:'巴菲特的老师写的。不用全读——第八章"市场先生"和第二十章够你用一辈子。比《证券分析》好读太多，但需要一点耐心。'},
       {id:'vr5',title:'证券分析',author:'格雷厄姆 / 多德',diff:5,
-        reason:'硬核经典。不要一上来就读——等前面几本读完，觉得准备好了，再翻开它。它会等你。'},
+        reason:'硬核经典。别一上来就读它——等前面几本书读完了，觉得准备好了，再翻开。它会等你。'},
     ],
     pathBooks:[
       {id:'vp1',title:'小狗钱钱',author:'博多·舍费尔',level:1,seq:1,
         reason:'最好的起点。用一个12岁女孩的理财故事，把"钱"这件事讲得既简单又有温度。读完你会开始记账——不是因为有人逼你，是你自己想。好读、有获得感。'},
       {id:'vp2',title:'富爸爸穷爸爸',author:'罗伯特·清崎',level:1,seq:2,
-        reason:'小狗钱钱讲习惯，这本讲观念。两个爸爸对比会逼你重新想：工作赚钱和让钱为你工作，是两件完全不同的事。一周能读完。'},
+        reason:'小狗钱钱讲习惯，这本讲观念。两个爸爸的对比会逼你重新想一件事：工作赚钱和让钱为你工作，是两件完全不同的事。一周能读完。'},
       {id:'vp3',title:'穷查理宝典',author:'彼得·考夫曼',level:1,seq:3,
-        reason:'芒格一辈子智慧的合集。不是教你赚钱，是教你怎么不犯傻。"反过来想，永远反过来想"——这句话读完就忘不掉。随时翻开哪页都能读。'},
+        reason:'芒格一辈子智慧的合集。不是教你赚钱，是教你怎么不犯傻。"反过来想，永远反过来想"——这句话够你用一辈子。可以随时翻开任何一页读。'},
       {id:'vp4',title:'投资中最简单的事',author:'邱国鹭',level:2,seq:4,
-        reason:'从这本开始，你正式踏入价值投资。邱国鹭把格雷厄姆和巴菲特那套用中国人的话说了一遍，好读、不装。读完你会理解"好公司+好价格"六个字的分量。'},
+        reason:'从这本开始，你正式踏入价值投资。邱国鹭把格雷厄姆和巴菲特那套用中国人能懂的话说了一遍，好读、不装。读完你会明白为什么"便宜买好货"五个字那么值钱。'},
       {id:'vp5',title:'聪明的投资者',author:'本杰明·格雷厄姆',level:2,seq:5,
-        reason:'到这本了。不用怕——挑重点章节读：第八章"市场先生"和第二十章"安全边际"。市场先生的比喻会让你从此不再被K线吓到。这本偏厚，但值得慢慢啃。'},
+        reason:'到这本了。不用怕——挑重点读：第八章"市场先生"和第二十章"安全边际"。市场先生的比喻会彻底改变你看待股价涨跌的方式。偏厚，但值得。'},
       {id:'vp6',title:'巴菲特致股东的信',author:'沃伦·巴菲特',level:2,seq:6,
-        reason:'原汁原味的巴菲特，比任何二手解读都值得看。看他怎么想、怎么说、怎么做——读完你会开始读年报的原文，因为他让你觉得读年报是一件有趣的事。'},
+        reason:'原汁原味的巴菲特，比任何二手解读都值得看。看他怎么想、怎么说、怎么做——读完你会开始觉得读年报是一件有意思的事，而不是一件苦差事。'},
       {id:'vp7',title:'证券分析',author:'格雷厄姆 / 多德',level:3,seq:7,
-        reason:'你走到这里了。这不是一本好读的书——厚、密、需要静下心慢慢啃。但读完它，你对"价值"二字的理解会和绝大多数投资者完全不同。不是必须读完，但如果你想成为认真的投资者——它等你。'},
+        reason:'你走到这里了。这本不好读——厚、密、需要静下心慢慢啃。但读完它，你对"价值"两个字的理解会和绝大多数投资者完全不同。不是必须读完，但如果你想成为认真的投资者——它在这儿等你。'},
     ]
   },
   'china':{
-    id:'china',name:'理解中国',desc:'政治·经济·历史，左中右视角多元呈现',
-    color:'#3A526B',label:'即将推出',rulerBooks:[],pathBooks:[]
+    id:'china', name:'理解中国', desc:'政治·经济·历史，多元视角，不站队',
+    color:'#3A526B',
+    rulerBooks:[
+      {id:'cr1',title:'万历十五年',author:'黄仁宇',diff:2,
+        reason:'六个小人物的命运，讲透一个大帝国的运转逻辑。好读到不像历史书——像在读小说，但每页都在教你理解中国。'},
+      {id:'cr2',title:'乡土中国',author:'费孝通',diff:2,
+        reason:'薄薄一本，把中国社会的底层逻辑说透了。读完你会理解为什么"关系"在中国这么重要——这不是道德判断，是结构使然。'},
+      {id:'cr3',title:'中国历代政治得失',author:'钱穆',diff:3,
+        reason:'钱穆用五次演讲把两千年政治制度梳理了一遍。不偏不倚，就事论事。读完你会对"中国为什么是中国"有自己的判断。'},
+      {id:'cr4',title:'邓小平时代',author:'傅高义',diff:4,
+        reason:'一个美国学者写的当代中国史。资料扎实、叙述克制。厚，但每一章都让你更理解今天的中国从何而来。'},
+      {id:'cr5',title:'剑桥中国史（选卷）',author:'费正清 等主编',diff:5,
+        reason:'多卷本学术巨著。不用从头读到尾——挑你感兴趣的朝代切入。西方汉学界几十年的集体成果，视角和国内教材完全不同。'},
+    ],
+    pathBooks:[
+      {id:'cp1',title:'万历十五年',author:'黄仁宇',level:1,seq:1,
+        reason:'最好的中国史入门。不讲帝王将相的丰功伟绩，讲的是一个"无关紧要的年份"里，制度如何决定了每个人的命运。中文写作的天花板。好读到停不下来。'},
+      {id:'cp2',title:'乡土中国',author:'费孝通',level:1,seq:2,
+        reason:'不到200页，但每一页都在解释你身边的中国。"差序格局""熟人社会"这些概念，读完你会在大街小巷里反复看见它们。社会学的入门书，也是理解中国的入门书。'},
+      {id:'cp3',title:'中国历代政治得失',author:'钱穆',level:1,seq:3,
+        reason:'五次演讲整理成书，语言是半白话但很好懂。钱穆不站左不站右，只是把汉唐宋明清的制度摊开给你看。读完你会对"改革为什么难"有自己的答案。'},
+      {id:'cp4',title:'邓小平时代',author:'傅高义',level:2,seq:4,
+        reason:'这本书厚，但读起来不累。傅高义写得很克制——不吹不黑，就是告诉你发生了什么、为什么发生。读完你会理解改革开放不是某个人的灵光一现，是一大群人在极端困难下硬推出来的。'},
+      {id:'cp5',title:'叫魂',author:'孔飞力',level:2,seq:5,
+        reason:'一个"妖术"恐慌如何在1768年席卷半个中国——孔飞力用一个小切口，剖开了帝制中国的统治逻辑。故事性极强，读起来像侦探小说，但每一章都在讲政治。'},
+      {id:'cp6',title:'论中国',author:'亨利·基辛格',level:2,seq:6,
+        reason:'基辛格写了半个世纪以来和中国领导人的交往。不管你对这个人什么看法，他看中国的角度值得了解——一个现实主义外交家眼中的中国棋局。'},
+      {id:'cp7',title:'剑桥中国史（选卷）',author:'费正清 等主编',level:3,seq:7,
+        reason:'多卷本学术巨著，不需要通读。挑你感兴趣的朝代，看西方顶尖学者如何解读中国历史。会和你从小听到的版本非常不同——不是谁对谁错，是多一个视角。'},
+    ]
   },
   'philo':{
-    id:'philo',name:'哲学与存在',desc:'《悉达多》《西西弗神话》一脉，可读的思想史',
-    color:'#3D5C4A',label:'即将推出',rulerBooks:[],pathBooks:[]
+    id:'philo', name:'哲学与存在', desc:'从《苏菲的世界》到《存在与时间》，可读的思想史',
+    color:'#3D5C4A',
+    rulerBooks:[
+      {id:'pr1',title:'被讨厌的勇气',author:'岸见一郎 / 古贺史健',diff:1,
+        reason:'对话体，一个晚上能读完。阿德勒心理学用最简单的对话讲出来——核心就一句：你的不幸，是你自己选的。听完不舒服，但有用。'},
+      {id:'pr2',title:'苏菲的世界',author:'乔斯坦·贾德',diff:2,
+        reason:'用小说的壳装了一部西方哲学史。好读到不像哲学书——跟着苏菲的信一封封拆下去，两千年的哲学家一个个认识过去。最好的哲学入门，没有一个字是唬人的。'},
+      {id:'pr3',title:'中国哲学简史',author:'冯友兰',diff:3,
+        reason:'冯友兰用不到三百页把中国哲学讲完了。干净、不废话。读完你会理解儒道释三家各自在回答什么问题——以及这些问题跟你今天的烦恼有什么关系。'},
+      {id:'pr4',title:'沉思录',author:'马可·奥勒留',diff:3,
+        reason:'一个罗马皇帝写给自己的日记，两千年来被无数人反复读。不是哲学体系，是一个人在权力顶端对自己说的实话。每天翻几页，比冥想好用。'},
+      {id:'pr5',title:'存在与时间',author:'海德格尔',diff:5,
+        reason:'二十世纪最重要的哲学著作之一——也是最难读的之一。不是说内容不好，是海德格尔的语言本身就设置了门槛。放到最后，等你准备好了再碰。'},
+    ],
+    pathBooks:[
+      {id:'pp1',title:'被讨厌的勇气',author:'岸见一郎 / 古贺史健',level:1,seq:1,
+        reason:'一个晚上能读完，但可能会改变你之后很多年的活法。不是喊口号式的"做自己"——阿德勒用逻辑推给你看：你不必活在别人的期待里。读完会轻快很多。'},
+      {id:'pp2',title:'苏菲的世界',author:'乔斯坦·贾德',level:1,seq:2,
+        reason:'最好的哲学入门书，没有之一。从古希腊一路走到当代，每个哲学家都像认识了一个新朋友。读完你不再觉得"哲学"是象牙塔里的东西——它就是在问"我该怎么活"。'},
+      {id:'pp3',title:'中国哲学简史',author:'冯友兰',level:1,seq:3,
+        reason:'用极干净的中文把中国哲学讲清楚了。冯友兰不卖弄、不玄虚——孔子在讲什么、庄子在反抗什么、禅宗在做什么，读完你全明白。而且会发现自己平时的很多想法，古人早想过了。'},
+      {id:'pp4',title:'沉思录',author:'马可·奥勒留',level:2,seq:4,
+        reason:'一个罗马皇帝在战争间隙写给自己的日记。不装、不说教——就是一个位高权重的人不断提醒自己：什么重要、什么不重要。睡前翻几页，比任何鸡汤都好用。可以读一辈子。'},
+      {id:'pp5',title:'西西弗神话',author:'阿尔贝·加缪',level:2,seq:5,
+        reason:'加缪开篇就说："真正严肃的哲学问题只有一个，就是自杀。"然后他用一本薄薄的小书论证了为什么人生值得过。偏文学、偏诗意，但每一页都在直视最硬的问题。'},
+      {id:'pp6',title:'悉达多',author:'赫尔曼·黑塞',level:2,seq:6,
+        reason:'一个印度贵族青年寻找自我的故事，但写的其实是每一个认真活过的人。黑塞的语言像诗，读完你会安静很久——不是消沉的那种安静，是觉得很多事忽然想通了的那种。'},
+      {id:'pp7',title:'存在与时间（导读+选读）',author:'海德格尔',level:3,seq:7,
+        reason:'不推荐直接啃原典。找一本好的导读（推荐陈嘉映的），配合核心章节选读。海德格尔在追问的问题其实每个人都想过——"我在这个世界里，到底在干什么？"——只是他用了一种极端精密的方式去追。'},
+    ]
   },
   'aesth':{
-    id:'aesth',name:'审美',desc:'摄影·诗·美学，戴欣的独特标签',
-    color:'#B8944A',label:'即将推出',rulerBooks:[],pathBooks:[]
+    id:'aesth', name:'审美', desc:'摄影·诗·美学，戴欣的独特标签，别的荐书号没有',
+    color:'#B8944A',
+    rulerBooks:[
+      {id:'ar1',title:'纽约摄影学院摄影教材（上册）',author:'纽约摄影学院',diff:1,
+        reason:'全世界销量最高的摄影教材，零基础友好。上册讲清楚曝光三要素和构图就够了——看完拿起相机就知道自己在干什么。'},
+      {id:'ar2',title:'艺术的故事',author:'贡布里希',diff:2,
+        reason:'没有一句学术黑话的艺术史。从洞穴壁画讲到现代艺术，贡布里希像讲故事一样讲艺术——读完你去美术馆会有完全不同的眼光。'},
+      {id:'ar3',title:'观看之道',author:'约翰·伯格',diff:2,
+        reason:'很薄，但每一页都在颠覆你怎么看世界。伯格说：我们看画的方式，其实是我们被训练出来的。读完你会开始质疑所有图像——包括广告和朋友圈。'},
+      {id:'ar4',title:'美的历程',author:'李泽厚',diff:3,
+        reason:'把中国几千年艺术和美学串成一条线讲。从青铜器到红楼梦，李泽厚让每一件作品都活在你面前。需要一点耐心，但回报很大。'},
+      {id:'ar5',title:'美学（黑格尔）',author:'黑格尔',diff:5,
+        reason:'西方美学理论的珠峰，但极难读。黑格尔把艺术、宗教、哲学盛在一个体系里讲。不需要从头读到尾，放在书架上，某天忽然想读一段时就翻开。'},
+    ],
+    pathBooks:[
+      {id:'ap1',title:'纽约摄影学院摄影教材（上册）',author:'纽约摄影学院',level:1,seq:1,
+        reason:'最好的摄影入门书，没有之一。上册就够了——把光圈、快门、ISO三个东西讲明白了，你就知道相机在干什么了。剩下的就是多拍。里面的练习可以一个一个做。'},
+      {id:'ap2',title:'顾城诗选',author:'顾城',level:1,seq:2,
+        reason:'顾城的诗干净到像小孩写的——但不是小孩。他用最简单的词说最复杂的事。"黑夜给了我黑色的眼睛，我却用它寻找光明"——就这一句，够你回味很多年。'},
+      {id:'ap3',title:'艺术的故事',author:'贡布里希',level:1,seq:3,
+        reason:'没有一句话是你不懂的。从原始人在洞穴里画野牛，一直到毕加索——贡布里希让你觉得艺术史不是"美术课"，是一个又一个真实的人在解决真实的问题。读完你会开始去美术馆。'},
+      {id:'ap4',title:'观看之道',author:'约翰·伯格',level:2,seq:4,
+        reason:'很薄，但很锋利。伯格让你意识到：你每天看到的所有图像——广告、新闻照片、朋友圈自拍——背后都有人在操控你的视线。读完你会开始"看见"那些你以前只是"看"的东西。'},
+      {id:'ap5',title:'美的历程',author:'李泽厚',level:2,seq:5,
+        reason:'把中国几千年的美串成了一条清晰的线。从青铜器的狞厉之美到宋元的淡远——李泽厚不是在讲"艺术史"，是在讲中国人怎么一步一步变成今天的审美方式。'},
+      {id:'ap6',title:'泰戈尔诗选',author:'泰戈尔',level:2,seq:6,
+        reason:'泰戈尔的诗像夏天的风——不重、不费劲，但每一句都会在你心里停很久。适合随时翻开、随时合上。不是"读完"的书，是"反复读"的书。'},
+      {id:'ap7',title:'写给大家的西方美术史',author:'蒋勋',level:2,seq:7,
+        reason:'蒋勋的风格有人爱有人嫌，但作为入门，他做到了最重要的事——让你觉得美是跟你有关系的。读完再去看《艺术的故事》或《美的历程》，门槛会低很多。'},
+    ]
   }
 };
 
@@ -180,12 +260,12 @@ const ST = (()=>{
 function save(){localStorage.setItem('dx_bookshelf',JSON.stringify(ST));}
 
 let currentPath = 'value';
-let currentView = 'paths'; // paths | assess | recommend
+let currentView = 'paths';
+let assessSelections = new Set();
 
 // ============================================================
-// 渲染引擎
+// 渲染
 // ============================================================
-const $ = id=>document.getElementById(id);
 const view = ()=>document.getElementById('view');
 
 function render(){
@@ -193,64 +273,50 @@ function render(){
   else if(currentView==='assess') renderAssess();
   else if(currentView==='recommend') renderRecommend();
 }
-window.addEventListener('popstate',()=>{
-  // 简单处理回退
-  if(currentView==='assess'){currentView='paths';render();}
-  else if(currentView==='recommend'){currentView='assess';render();}
-});
 
 // ---- 路径选择 ----
 function renderPaths(){
   const cards = Object.values(PATHS).map(p=>{
-    const disabled = !p.rulerBooks.length;
-    return `<div class="path-card${disabled?' disabled':''}" data-path="${p.id}">
+    const hasLevel = ST.levels[p.id];
+    return `<div class="path-card" data-path="${p.id}">
       <div class="path-strip" style="background:${p.color}"></div>
       <div class="path-body">
         <h3>${p.name}</h3>
         <div class="desc">${p.desc}</div>
-        <div class="path-tag">${p.label}</div>
+        <div class="path-tag">${hasLevel ? '已测：'+levelLabel(hasLevel) : '入门→进阶→硬核'}</div>
       </div>
     </div>`;
   }).join('');
-  const hasLevel = ST.levels['value'];
-  const savedHint = hasLevel ? `<div class="ruler-hint">你已测过：<strong>${levelLabel(hasLevel)}</strong>　<a style="color:#9B2D26;cursor:pointer" class="reassess-link">重新测</a></div>` : '';
 
-  view().innerHTML = `
-    <div class="path-list">${cards}</div>
-    ${savedHint}
-  `;
-  view().querySelectorAll('.path-card:not(.disabled)').forEach(c=>{
+  view().innerHTML = `<div class="path-list">${cards}</div>`;
+  view().querySelectorAll('.path-card').forEach(c=>{
     c.onclick=()=>{currentPath=c.dataset.path;currentView='assess';render();window.scrollTo(0,0);};
   });
-  const re = view().querySelector('.reassess-link');
-  if(re) re.onclick=()=>{currentPath='value';currentView='assess';render();window.scrollTo(0,0);};
 }
 
 // ---- 标尺书判定 ----
-let assessSelections = new Set();
-
 function renderAssess(){
   const p = PATHS[currentPath];
   const prev = ST.levels[currentPath];
-  // 恢复之前的勾选
   assessSelections = new Set();
+
   view().innerHTML = `
     <div class="back" id="backBtn">← 返回</div>
-    <h2 style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun',serif;font-size:22px;font-weight:700;margin-bottom:4px">${p.name}</h2>
-    <p class="ruler-intro">这些书从<strong>最易到最难</strong>排列。<br>勾出你<strong>真正读过</strong>的——系统会据此判断你的段位，跳过你已经读过的。</p>
+    <h2 style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun',serif;font-size:23px;font-weight:700;margin-bottom:4px;letter-spacing:.04em">${p.name}</h2>
+    <p class="ruler-intro">这些书从<strong>最容易到最难</strong>排列。<br>勾出你<strong>真正读过的</strong>——系统会判断你的段位，同时帮你排除已读书。</p>
     <div class="ruler-list" id="rulerList"></div>
     <div class="ruler-action">
       ${prev ? '<div class="ruler-hint">上次判定：<strong>'+levelLabel(prev)+'</strong></div>' : ''}
-      <button class="btn btn-primary" id="assessBtn">${assessSelections.size ? '测好了，看推荐 →' : '我一都没读过，直接看推荐 →'}</button>
+      <button class="btn btn-primary" id="assessBtn">我一都没读过，直接看推荐 →</button>
     </div>
   `;
   document.getElementById('backBtn').onclick=()=>{currentView='paths';render();};
 
   const list = document.getElementById('rulerList');
-  p.rulerBooks.forEach(b=>{
-    const sel = ST.readIds.includes(b.id) || assessSelections.has(b.id);
+  const diffLabels = {1:'很容易',2:'好读',3:'需要耐心',4:'偏难',5:'硬核'};
+  p.rulerBooks.forEach((b,i)=>{
     if(ST.readIds.includes(b.id)) assessSelections.add(b.id);
-    const diffWord = {1:'☆',2:'☆☆',3:'☆☆☆',5:'☆☆☆☆☆'}[b.diff]||'☆☆';
+    const sel = assessSelections.has(b.id);
     const div = document.createElement('div');
     div.className = 'ruler-item'+(sel?' selected':'');
     div.innerHTML = `
@@ -258,21 +324,29 @@ function renderAssess(){
       <div class="ruler-body">
         <div class="ruler-check"></div>
         <div class="ruler-info"><div class="b-title">${b.title}</div><div class="b-author">${b.author}</div></div>
-        <div class="ruler-diff">${diffWord}</div>
+        <div class="ruler-diff">${'★'.repeat(b.diff)}<span>${diffLabels[b.diff]||''}</span></div>
       </div>
     `;
     div.querySelector('.ruler-body').onclick=()=>{
-      const id = b.id;
-      if(assessSelections.has(id)){assessSelections.delete(id);}
-      else{assessSelections.add(id);}
-      // refresh
-      renderAssessState();
+      if(assessSelections.has(b.id)) assessSelections.delete(b.id);
+      else assessSelections.add(b.id);
+      renderAssessState(list, p);
     };
     list.appendChild(div);
   });
+
+  function renderAssessState(listEl, pathObj){
+    const items = listEl.querySelectorAll('.ruler-item');
+    items.forEach((item,j)=>{
+      const bid = pathObj.rulerBooks[j].id;
+      if(assessSelections.has(bid)) item.classList.add('selected');
+      else item.classList.remove('selected');
+    });
+    const btn = document.getElementById('assessBtn');
+    btn.textContent = assessSelections.size ? '测好了，看推荐 →' : '我一都没读过，直接看推荐 →';
+  }
+
   document.getElementById('assessBtn').onclick=()=>{
-    // 判定水平
-    const p = PATHS[currentPath];
     let maxDiff = 0;
     assessSelections.forEach(id=>{
       const rb = p.rulerBooks.find(b=>b.id===id);
@@ -284,25 +358,12 @@ function renderAssess(){
     else level='入门';
 
     ST.levels[currentPath] = level;
-    // 标记已读
     assessSelections.forEach(id=>{if(!ST.readIds.includes(id)) ST.readIds.push(id);});
     save();
     currentView='recommend';
     render();
     window.scrollTo(0,0);
   };
-
-  function renderAssessState(){
-    const items = list.querySelectorAll('.ruler-item');
-    items.forEach(item=>{
-      const body = item.querySelector('.ruler-body');
-      const id = PATHS[currentPath].rulerBooks[[...items].indexOf(item)].id;
-      if(assessSelections.has(id)) item.classList.add('selected');
-      else item.classList.remove('selected');
-    });
-    const btn = document.getElementById('assessBtn');
-    btn.textContent = assessSelections.size ? '测好了，看推荐 →' : '我一都没读过，直接看推荐 →';
-  }
 }
 
 // ---- 推荐结果 ----
@@ -311,19 +372,19 @@ function renderRecommend(){
   const level = ST.levels[currentPath]||'入门';
   const levelNum = {入门:1,进阶:2,深耕:3}[level];
 
-  // 模式1：等待用户选择方向（刚标记读完一本书）
+  // 模式1：节奏控制（刚标记读完）
   if(ST.awaitingPace){
     const sameCount = p.pathBooks.filter(b=>b.level===levelNum && !ST.readIds.includes(b.id)).length;
     const hasDeeper = p.pathBooks.some(b=>b.level>levelNum && !ST.readIds.includes(b.id));
     view().innerHTML = `
       <div class="back" id="backBtn">← 重测水平</div>
       <div style="margin-bottom:12px">
-        <span style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun',serif;font-size:20px;font-weight:700">${p.name}</span>
+        <span style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun',serif;font-size:21px;font-weight:700;letter-spacing:.04em">${p.name}</span>
         <span class="level-badge l${levelNum}">${levelLabel(level)}</span>
       </div>
       <div class="result-card"><div class="result-strip" style="background:${p.color}"></div>
         <div class="result-body" style="text-align:center;padding:32px 24px">
-          <div style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun',serif;font-size:20px;font-weight:700;margin-bottom:8px">已标记 ✓</div>
+          <div style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun',serif;font-size:21px;font-weight:700;margin-bottom:8px;letter-spacing:.04em">已标记 ✓</div>
           <div style="font-size:14px;color:#5C554D;margin-bottom:24px">下一本，你想怎么走？</div>
           <div class="result-acts">
             ${sameCount>0 ? `<button class="btn btn-outline" id="paceSame">同级别再来几本（还有 ${sameCount} 本）</button>` : ''}
@@ -349,17 +410,15 @@ function renderRecommend(){
   const candidates = p.pathBooks.filter(b=>!ST.readIds.includes(b.id));
   const sameLevel = candidates.filter(b=>b.level===levelNum);
   const nextBook = sameLevel.length>0 ? sameLevel[0] : (candidates.length>0 ? candidates[0] : null);
-
-  // 当前级别没书了但更深级别有
   const deeperAvailable = !sameLevel.length && candidates.some(b=>b.level>levelNum);
 
   view().innerHTML = `
     <div class="back" id="backBtn">← 重测水平</div>
     <div style="margin-bottom:16px">
-      <span style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun',serif;font-size:20px;font-weight:700">${p.name}</span>
+      <span style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun',serif;font-size:21px;font-weight:700;letter-spacing:.04em">${p.name}</span>
       <span class="level-badge l${levelNum}">${levelLabel(level)}</span>
     </div>
-    ${nextBook ? renderBookCard(nextBook, p.color) : renderAllDone(p, levelNum, deeperAvailable)}
+    ${nextBook ? renderBookCard(nextBook, p.color) : renderAllDone(levelNum, deeperAvailable)}
   `;
 
   if(nextBook){
@@ -391,7 +450,7 @@ function renderBookCard(b, color){
       <div class="result-body">
         <h2>${b.title}</h2>
         <div class="meta">${b.author} · ${diffStars}</div>
-        <div class="reason">${b.reason}</div>
+        <div class="reason" style="border-left-color:${color}">${b.reason}</div>
         <div class="result-acts">
           <button class="btn btn-primary" id="markReadBtn">读过了，标记已读</button>
           <button class="btn btn-outline" id="skipBtn">跳过这本</button>
@@ -401,44 +460,18 @@ function renderBookCard(b, color){
   `;
 }
 
-function renderPaceControl(levelNum, p){
-  const sameCount = p.pathBooks.filter(b=>b.level===levelNum && !ST.readIds.includes(b.id)).length;
-  const hasDeeper = p.pathBooks.some(b=>b.level>levelNum && !ST.readIds.includes(b.id));
-  let sameHtml='', deepHtml='';
-  if(sameCount>0){
-    sameHtml = `<button class="btn btn-outline" id="paceSame">同级别再来几本（还有 ${sameCount} 本未读）</button>`;
-  }
-  if(hasDeeper){
-    deepHtml = `<button class="btn btn-primary" id="paceDeep">我想读更深的 →</button>`;
-  }
-  if(!sameHtml && !deepHtml) return '';
-  return `
-    <div class="pace-box">
-      <div class="pace-q">下一本，你想怎么走？</div>
-      <div class="pace-btns">
-        ${sameHtml}
-        ${deepHtml}
-      </div>
-    </div>
-  `;
-}
-
-function renderAllDone(p, levelNum, deeperAvailable){
+function renderAllDone(levelNum, deeperAvailable){
   if(deeperAvailable){
     return `
-      <div class="done-msg">
-        <div class="icon">📚</div>
+      <div class="done-msg"><div class="icon">📚</div>
         <p>当前阶段的书你都读完了。<br>要不要挑战更深的？</p>
         <button class="btn btn-primary" id="goDeeperBtn" style="margin-top:16px">我想读更深的 →</button>
-      </div>
-    `;
+      </div>`;
   }
   return `
-    <div class="done-msg">
-      <div class="icon">🎉</div>
+    <div class="done-msg"><div class="icon">🎉</div>
       <p>这条路径上的书你全部读完了。<br>好样的。</p>
-    </div>
-  `;
+    </div>`;
 }
 
 // ---- 工具 ----
@@ -448,7 +481,6 @@ function toast(m){
   clearTimeout(t._tid);t._tid=setTimeout(()=>t.classList.remove('show'),1800);
 }
 
-// ---- 初始化 ----
 render();
 </script>
 </body>
