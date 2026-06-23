@@ -453,7 +453,7 @@ function renderAssess(){
   const spin = p.color;
 
   view().innerHTML = `
-    <button class="back" id="backBtn">← 返回路径</button>
+    <button class="back" id="backBtn">← 返回</button>
     <h2 style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun','FangSong',serif;font-size:23px;font-weight:700;margin-bottom:6px;letter-spacing:.06em">${p.name}</h2>
     <p class="ruler-intro">从易到难排列。<strong style="font-size:15px;color:#9B2D26">勾出你已经读过的</strong>，系统自动判断你的段位。</p>
     <div class="ruler-list" id="rulerList" style="--spine:${spin}"></div>
@@ -531,8 +531,6 @@ function renderRecommend(){
       </div>
       <div class="result-card"><div class="result-strip" style="background:${spin}"></div>
         <div class="result-body" style="text-align:center;padding:32px 24px">
-          <div style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun','FangSong',serif;font-size:21px;font-weight:700;margin-bottom:8px;letter-spacing:.06em">已标记 ✓</div>
-          <div style="font-size:14px;color:#5C554D;margin-bottom:24px">下一本，你想怎么走？</div>
           <div class="pace-btns">
             <button class="btn ${sameCount>0?'btn-outline':'btn-outline'}" id="paceSame" ${sameCount===0?'disabled style="opacity:.35;pointer-events:none"':''}>同级别再来一本${sameCount>0?'（还有 '+sameCount+' 本）':'（暂无更多）'}</button>
             <button class="btn btn-primary" id="paceDeep" ${!hasDeeper?'disabled style="opacity:.35;pointer-events:none"':''}>我想读更深的 →${!hasDeeper?'（已到最后）':''}</button>
