@@ -459,7 +459,7 @@ function renderAssess(){
     <div class="ruler-list" id="rulerList" style="--spine:${spin}"></div>
     <div class="ruler-sticky">
       ${prev ? '<div class="ruler-hint">上次判定：<strong>'+LV[prev]+'</strong></div>' : ''}
-      <button class="btn btn-primary" id="assessBtn">我一都没读过，直接看推荐 →</button>
+      <button class="btn btn-primary" id="assessBtn">我都没读过，直接看推荐 →</button>
     </div>
   `;
   document.getElementById('backBtn').onclick=()=>{currentView='paths';render();};
@@ -492,7 +492,7 @@ function renderAssess(){
       if(assessSelections.has(pathObj.rulerBooks[j].id)) item.classList.add('selected');
       else item.classList.remove('selected');
     });
-    document.getElementById('assessBtn').textContent = assessSelections.size ? '测好了，看推荐 →' : '我一都没读过，直接看推荐 →';
+    document.getElementById('assessBtn').textContent = assessSelections.size ? '测好了，看推荐 →' : '我都没读过，直接看推荐 →';
   }
 
   document.getElementById('assessBtn').onclick=()=>{
