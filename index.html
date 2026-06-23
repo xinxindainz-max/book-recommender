@@ -3,36 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
-<title>戴欣的私人书架</title>
+<title>每天聪明一点点 · 图书推荐 · 戴欣欣</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px}
 body{
   font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   background:#FBF9F4;color:#1C1917;max-width:480px;margin:0 auto;
-  padding:48px 24px 56px;line-height:1.7;
+  padding:48px 24px 80px;line-height:1.7;
   -webkit-tap-highlight-color:transparent;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
 
-/* ====== 标题（思源/宋体系，强化字距字重对比） ====== */
-.hed{margin-bottom:20px}
-.hed h1{
+/* ====== 首页抬头（A2：扉页式三层） ====== */
+.hero{text-align:center;margin-bottom:36px;padding-top:8px}
+.hero h1{
   font-family:"Noto Serif SC","Songti SC","STSong","SimSun","FangSong",serif;
-  font-size:34px;font-weight:800;letter-spacing:.06em;line-height:1.35;
-  word-break:keep-all;text-rendering:optimizeLegibility;
+  font-size:34px;font-weight:800;letter-spacing:.08em;line-height:1.4;
+  word-break:keep-all;margin-bottom:6px;
   -webkit-font-feature-settings:"kern";font-feature-settings:"kern";
 }
-.hed .sub{font-size:15px;color:#5C554D;margin-top:10px;letter-spacing:.04em;font-weight:400}
+.hero .tagline{font-size:15px;color:#5C554D;letter-spacing:.06em;margin-bottom:4px}
+.hero .byline{font-size:12px;color:#8B8580;letter-spacing:.1em}
 
-/* ====== 路径卡片（书脊式） ====== */
+/* ====== 路径选择卡片 ====== */
 .path-list{display:flex;flex-direction:column;gap:10px;margin:28px 0}
 .path-card{display:flex;border-radius:3px;overflow:hidden;background:#FEFDFA;
   box-shadow:0 1px 2px rgba(0,0,0,.04),0 2px 6px rgba(0,0,0,.03);
   cursor:pointer;transition:all .2s ease;user-select:none;min-height:72px}
 .path-card:active{transform:translateX(3px);box-shadow:0 1px 4px rgba(0,0,0,.08)}
-.path-card.disabled{opacity:.4;cursor:default;pointer-events:none}
 .path-strip{width:6px;flex-shrink:0}
 .path-body{flex:1;padding:18px 20px;display:flex;flex-direction:column;justify-content:center}
 .path-body h3{font-family:"Noto Serif SC","Songti SC","STSong","SimSun","FangSong",serif;font-size:19px;font-weight:700;letter-spacing:.05em}
@@ -40,26 +39,29 @@ body{
 .path-tag{font-size:11px;color:#8B8580;margin-top:4px;letter-spacing:.04em}
 
 /* ====== 标尺书 ====== */
-.ruler-intro{font-size:14px;color:#5C554D;line-height:1.75;margin-bottom:20px}
+.ruler-intro{font-size:13px;color:#5C554D;line-height:1.65;margin-bottom:14px}
 .ruler-intro strong{color:#1C1917}
-.ruler-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.ruler-list{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
 .ruler-item{display:flex;align-items:stretch;background:#FEFDFA;border-radius:3px;
   overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.03);transition:all .15s ease}
 .ruler-strip{width:4px;flex-shrink:0;background:#D9D4CD;transition:background .2s}
-.ruler-item.selected .ruler-strip{background:#9B2D26}
-.ruler-body{flex:1;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer}
-.ruler-check{width:22px;height:22px;border-radius:50%;border:2px solid #C7C0B8;
+.ruler-item.selected .ruler-strip{background:var(--spine)}
+.ruler-body{flex:1;padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer}
+.ruler-check{width:20px;height:20px;border-radius:50%;border:2px solid #C7C0B8;
   flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.ruler-item.selected .ruler-check{background:#9B2D26;border-color:#9B2D26}
-.ruler-item.selected .ruler-check::after{content:'✓';color:#fff;font-size:12px;font-weight:700}
+.ruler-item.selected .ruler-check{background:var(--spine);border-color:var(--spine)}
+.ruler-item.selected .ruler-check::after{content:'✓';color:#fff;font-size:11px;font-weight:700}
 .ruler-info{flex:1;min-width:0}
-.ruler-info .b-title{font-family:"Noto Serif SC","Songti SC","STSong","SimSun","FangSong",serif;font-size:16px;font-weight:700;letter-spacing:.03em}
-.ruler-info .b-author{font-size:12px;color:#8B8580}
-.ruler-diff{font-size:10px;color:#8B8580;white-space:nowrap;text-align:right}
-.ruler-diff span{display:block;font-size:9px;letter-spacing:.1em}
+.ruler-info .b-title{font-family:"Noto Serif SC","Songti SC","STSong","SimSun","FangSong",serif;font-size:15px;font-weight:700;letter-spacing:.03em}
+.ruler-info .b-author{font-size:11px;color:#8B8580}
+.ruler-diff{font-size:9px;color:#8B8580;white-space:nowrap;text-align:right;line-height:1.3}
+.ruler-diff span{display:block;font-size:9px;letter-spacing:.04em}
 
-.ruler-action{margin-bottom:24px}
-.ruler-hint{font-size:12px;color:#8B8580;text-align:center;margin-bottom:12px}
+/* ---- 标尺固定底栏（A4） ---- */
+.ruler-sticky{position:sticky;bottom:0;background:#FBF9F4;padding:12px 0 4px;z-index:10;
+  border-top:1px solid #E8E4DB;margin:0 -24px;padding-left:24px;padding-right:24px}
+.ruler-sticky .btn{margin:0}
+.ruler-hint{font-size:12px;color:#8B8580;text-align:center;margin-bottom:8px}
 
 /* ====== 按钮 ====== */
 .btn{display:block;width:100%;padding:13px 0;border-radius:6px;font-size:15px;font-weight:600;
@@ -69,7 +71,7 @@ body{
 .btn-primary{background:#1C1917;color:#FBF9F4}
 .btn-outline{background:transparent;color:#1C1917;border:1.5px solid #C7C0B8;margin-top:8px}
 
-/* ====== 推荐结果卡片（书脊式） ====== */
+/* ====== 推荐结果卡片 ====== */
 .result-card{background:#FEFDFA;border-radius:3px;overflow:hidden;
   box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.04);margin-bottom:20px;
   animation:fadeUp .4s ease}
@@ -87,6 +89,7 @@ body{
 .level-badge.l1{background:#F0EDE8;color:#6B5E4F}
 .level-badge.l2{background:#E8E2D9;color:#4A3F35}
 .level-badge.l3{background:#D4C8B8;color:#2A1F15}
+.level-badge.l4{background:#B8A898;color:#1A0F05}
 
 /* ====== 节奏控制 ====== */
 .pace-box{background:#FEFDFA;border-radius:3px;padding:20px 24px;
@@ -94,10 +97,12 @@ body{
 .pace-q{font-size:15px;font-weight:600;margin-bottom:14px}
 .pace-btns{display:flex;flex-direction:column;gap:8px}
 
-/* ====== 返回 ====== */
-.back{font-size:13px;color:#5C554D;cursor:pointer;display:inline-flex;align-items:center;gap:4px;
-  margin-bottom:20px;user-select:none}
-.back:hover{color:#1C1917}
+/* ====== 返回（A6：加大加深） ====== */
+.back{display:inline-flex;align-items:center;gap:6px;padding:8px 14px 8px 10px;
+  margin-bottom:20px;font-size:14px;font-weight:600;color:#1C1917;
+  background:#F0EDE8;border-radius:6px;cursor:pointer;user-select:none;
+  transition:all .15s ease;border:none;font-family:inherit}
+.back:active{background:#E5E1DA;transform:scale(.97)}
 
 /* ====== Toast ====== */
 .toast{position:fixed;top:28px;left:50%;transform:translateX(-50%);background:#1C1917;color:#FBF9F4;
@@ -113,157 +118,304 @@ body{
 </head>
 <body>
 
-<div class="hed"><h1>戴欣的<br>私人书架</h1><p class="sub">四条阅读路径，一人带路</p></div>
+<div class="hero">
+  <h1>每天聪明一点点</h1>
+  <p class="tagline">图书推荐</p>
+  <p class="byline">戴欣欣推荐</p>
+</div>
 <div id="view"></div>
 <div class="toast" id="toast"></div>
 
 <script>
 // ============================================================
-// 数据：四条认知路径
+// 数据
 // ============================================================
+const LV = ['','好读','进阶','高阶','最高阶'];
+
+function R(title,author,reason){return{title,author,reason};}
+
 const PATHS = {
-  'value':{
-    id:'value', name:'价值投资', desc:'正统巴芒派，从《小狗钱钱》到《证券分析》',
-    color:'#9B2D26',
-    rulerBooks:[
-      {id:'vr1',title:'小狗钱钱',author:'博多·舍费尔',diff:1,
-        reason:'用故事讲钱，小孩都能看懂。读完你会开始想"我的钱现在在干什么"——这个念头比任何理财技巧都值钱。'},
-      {id:'vr2',title:'富爸爸穷爸爸',author:'罗伯特·清崎',diff:1,
-        reason:'换一个脑子想钱。资产vs负债那一章就值回时间——很多人一辈子都分不清自己在买资产还是在买负债。'},
-      {id:'vr3',title:'投资中最简单的事',author:'邱国鹭',diff:2,
-        reason:'中国人写的最干净的价值投资入门。接地气，没一句黑话。读完你会知道买股票到底在买什么——答案不是你想象的那样。'},
-      {id:'vr4',title:'聪明的投资者',author:'本杰明·格雷厄姆',diff:3,
-        reason:'巴菲特的老师写的。不用全读——第八章"市场先生"和第二十章够你用一辈子。比《证券分析》好读太多，但需要一点耐心。'},
-      {id:'vr5',title:'证券分析',author:'格雷厄姆 / 多德',diff:5,
-        reason:'硬核经典。别一上来就读它——等前面几本书读完了，觉得准备好了，再翻开。它会等你。'},
-    ],
-    pathBooks:[
-      {id:'vp1',title:'小狗钱钱',author:'博多·舍费尔',level:1,seq:1,
-        reason:'最好的起点。用一个12岁女孩的理财故事，把"钱"这件事讲得既简单又有温度。读完你会开始记账——不是因为有人逼你，是你自己想。好读、有获得感。'},
-      {id:'vp2',title:'富爸爸穷爸爸',author:'罗伯特·清崎',level:1,seq:2,
-        reason:'小狗钱钱讲习惯，这本讲观念。两个爸爸的对比会逼你重新想一件事：工作赚钱和让钱为你工作，是两件完全不同的事。一周能读完。'},
-      {id:'vp3',title:'穷查理宝典',author:'彼得·考夫曼',level:1,seq:3,
-        reason:'芒格一辈子智慧的合集。不是教你赚钱，是教你怎么不犯傻。"反过来想，永远反过来想"——这句话够你用一辈子。可以随时翻开任何一页读。'},
-      {id:'vp4',title:'投资中最简单的事',author:'邱国鹭',level:2,seq:4,
-        reason:'从这本开始，你正式踏入价值投资。邱国鹭把格雷厄姆和巴菲特那套用中国人能懂的话说了一遍，好读、不装。读完你会明白为什么"便宜买好货"五个字那么值钱。'},
-      {id:'vp5',title:'聪明的投资者',author:'本杰明·格雷厄姆',level:2,seq:5,
-        reason:'到这本了。不用怕——挑重点读：第八章"市场先生"和第二十章"安全边际"。市场先生的比喻会彻底改变你看待股价涨跌的方式。偏厚，但值得。'},
-      {id:'vp6',title:'巴菲特致股东的信',author:'沃伦·巴菲特',level:2,seq:6,
-        reason:'原汁原味的巴菲特，比任何二手解读都值得看。看他怎么想、怎么说、怎么做——读完你会开始觉得读年报是一件有意思的事，而不是一件苦差事。'},
-      {id:'vp7',title:'证券分析',author:'格雷厄姆 / 多德',level:3,seq:7,
-        reason:'你走到这里了。这本不好读——厚、密、需要静下心慢慢啃。但读完它，你对"价值"两个字的理解会和绝大多数投资者完全不同。不是必须读完，但如果你想成为认真的投资者——它在这儿等你。'},
-    ]
-  },
-  'china':{
-    id:'china', name:'理解中国', desc:'政治·经济·历史，多元视角，不站队',
-    color:'#3A526B',
-    rulerBooks:[
-      {id:'cr1',title:'万历十五年',author:'黄仁宇',diff:2,
-        reason:'六个小人物的命运，讲透一个大帝国的运转逻辑。好读到不像历史书——像在读小说，但每页都在教你理解中国。'},
-      {id:'cr2',title:'乡土中国',author:'费孝通',diff:2,
-        reason:'薄薄一本，把中国社会的底层逻辑说透了。读完你会理解为什么"关系"在中国这么重要——这不是道德判断，是结构使然。'},
-      {id:'cr3',title:'中国历代政治得失',author:'钱穆',diff:3,
-        reason:'钱穆用五次演讲把两千年政治制度梳理了一遍。不偏不倚，就事论事。读完你会对"中国为什么是中国"有自己的判断。'},
-      {id:'cr4',title:'邓小平时代',author:'傅高义',diff:4,
-        reason:'一个美国学者写的当代中国史。资料扎实、叙述克制。厚，但每一章都让你更理解今天的中国从何而来。'},
-      {id:'cr5',title:'剑桥中国史（选卷）',author:'费正清 等主编',diff:5,
-        reason:'多卷本学术巨著。不用从头读到尾——挑你感兴趣的朝代切入。西方汉学界几十年的集体成果，视角和国内教材完全不同。'},
-    ],
-    pathBooks:[
-      {id:'cp1',title:'万历十五年',author:'黄仁宇',level:1,seq:1,
-        reason:'最好的中国史入门。不讲帝王将相的丰功伟绩，讲的是一个"无关紧要的年份"里，制度如何决定了每个人的命运。中文写作的天花板。好读到停不下来。'},
-      {id:'cp2',title:'乡土中国',author:'费孝通',level:1,seq:2,
-        reason:'不到200页，但每一页都在解释你身边的中国。"差序格局""熟人社会"这些概念，读完你会在大街小巷里反复看见它们。社会学的入门书，也是理解中国的入门书。'},
-      {id:'cp3',title:'中国历代政治得失',author:'钱穆',level:1,seq:3,
-        reason:'五次演讲整理成书，语言是半白话但很好懂。钱穆不站左不站右，只是把汉唐宋明清的制度摊开给你看。读完你会对"改革为什么难"有自己的答案。'},
-      {id:'cp4',title:'邓小平时代',author:'傅高义',level:2,seq:4,
-        reason:'这本书厚，但读起来不累。傅高义写得很克制——不吹不黑，就是告诉你发生了什么、为什么发生。读完你会理解改革开放不是某个人的灵光一现，是一大群人在极端困难下硬推出来的。'},
-      {id:'cp5',title:'叫魂',author:'孔飞力',level:2,seq:5,
-        reason:'一个"妖术"恐慌如何在1768年席卷半个中国——孔飞力用一个小切口，剖开了帝制中国的统治逻辑。故事性极强，读起来像侦探小说，但每一章都在讲政治。'},
-      {id:'cp6',title:'论中国',author:'亨利·基辛格',level:2,seq:6,
-        reason:'基辛格写了半个世纪以来和中国领导人的交往。不管你对这个人什么看法，他看中国的角度值得了解——一个现实主义外交家眼中的中国棋局。'},
-      {id:'cp7',title:'剑桥中国史（选卷）',author:'费正清 等主编',level:3,seq:7,
-        reason:'多卷本学术巨著，不需要通读。挑你感兴趣的朝代，看西方顶尖学者如何解读中国历史。会和你从小听到的版本非常不同——不是谁对谁错，是多一个视角。'},
-    ]
-  },
-  'philo':{
-    id:'philo', name:'哲学与存在', desc:'从《苏菲的世界》到《存在与时间》，可读的思想史',
-    color:'#3D5C4A',
-    rulerBooks:[
-      {id:'pr1',title:'被讨厌的勇气',author:'岸见一郎 / 古贺史健',diff:1,
-        reason:'对话体，一个晚上能读完。阿德勒心理学用最简单的对话讲出来——核心就一句：你的不幸，是你自己选的。听完不舒服，但有用。'},
-      {id:'pr2',title:'苏菲的世界',author:'乔斯坦·贾德',diff:2,
-        reason:'用小说的壳装了一部西方哲学史。好读到不像哲学书——跟着苏菲的信一封封拆下去，两千年的哲学家一个个认识过去。最好的哲学入门，没有一个字是唬人的。'},
-      {id:'pr3',title:'中国哲学简史',author:'冯友兰',diff:3,
-        reason:'冯友兰用不到三百页把中国哲学讲完了。干净、不废话。读完你会理解儒道释三家各自在回答什么问题——以及这些问题跟你今天的烦恼有什么关系。'},
-      {id:'pr4',title:'沉思录',author:'马可·奥勒留',diff:3,
-        reason:'一个罗马皇帝写给自己的日记，两千年来被无数人反复读。不是哲学体系，是一个人在权力顶端对自己说的实话。每天翻几页，比冥想好用。'},
-      {id:'pr5',title:'存在与时间',author:'海德格尔',diff:5,
-        reason:'二十世纪最重要的哲学著作之一——也是最难读的之一。不是说内容不好，是海德格尔的语言本身就设置了门槛。放到最后，等你准备好了再碰。'},
-    ],
-    pathBooks:[
-      {id:'pp1',title:'被讨厌的勇气',author:'岸见一郎 / 古贺史健',level:1,seq:1,
-        reason:'一个晚上能读完，但可能会改变你之后很多年的活法。不是喊口号式的"做自己"——阿德勒用逻辑推给你看：你不必活在别人的期待里。读完会轻快很多。'},
-      {id:'pp2',title:'苏菲的世界',author:'乔斯坦·贾德',level:1,seq:2,
-        reason:'最好的哲学入门书，没有之一。从古希腊一路走到当代，每个哲学家都像认识了一个新朋友。读完你不再觉得"哲学"是象牙塔里的东西——它就是在问"我该怎么活"。'},
-      {id:'pp3',title:'中国哲学简史',author:'冯友兰',level:1,seq:3,
-        reason:'用极干净的中文把中国哲学讲清楚了。冯友兰不卖弄、不玄虚——孔子在讲什么、庄子在反抗什么、禅宗在做什么，读完你全明白。而且会发现自己平时的很多想法，古人早想过了。'},
-      {id:'pp4',title:'沉思录',author:'马可·奥勒留',level:2,seq:4,
-        reason:'一个罗马皇帝在战争间隙写给自己的日记。不装、不说教——就是一个位高权重的人不断提醒自己：什么重要、什么不重要。睡前翻几页，比任何鸡汤都好用。可以读一辈子。'},
-      {id:'pp5',title:'西西弗神话',author:'阿尔贝·加缪',level:2,seq:5,
-        reason:'加缪开篇就说："真正严肃的哲学问题只有一个，就是自杀。"然后他用一本薄薄的小书论证了为什么人生值得过。偏文学、偏诗意，但每一页都在直视最硬的问题。'},
-      {id:'pp6',title:'悉达多',author:'赫尔曼·黑塞',level:2,seq:6,
-        reason:'一个印度贵族青年寻找自我的故事，但写的其实是每一个认真活过的人。黑塞的语言像诗，读完你会安静很久——不是消沉的那种安静，是觉得很多事忽然想通了的那种。'},
-      {id:'pp7',title:'存在与时间（导读+选读）',author:'海德格尔',level:3,seq:7,
-        reason:'不推荐直接啃原典。找一本好的导读（推荐陈嘉映的），配合核心章节选读。海德格尔在追问的问题其实每个人都想过——"我在这个世界里，到底在干什么？"——只是他用了一种极端精密的方式去追。'},
-    ]
-  },
-  'aesth':{
-    id:'aesth', name:'审美', desc:'摄影·诗·美学，戴欣的独特标签，别的荐书号没有',
-    color:'#B8944A',
-    rulerBooks:[
-      {id:'ar1',title:'纽约摄影学院摄影教材（上册）',author:'纽约摄影学院',diff:1,
-        reason:'全世界销量最高的摄影教材，零基础友好。上册讲清楚曝光三要素和构图就够了——看完拿起相机就知道自己在干什么。'},
-      {id:'ar2',title:'艺术的故事',author:'贡布里希',diff:2,
-        reason:'没有一句学术黑话的艺术史。从洞穴壁画讲到现代艺术，贡布里希像讲故事一样讲艺术——读完你去美术馆会有完全不同的眼光。'},
-      {id:'ar3',title:'观看之道',author:'约翰·伯格',diff:2,
-        reason:'很薄，但每一页都在颠覆你怎么看世界。伯格说：我们看画的方式，其实是我们被训练出来的。读完你会开始质疑所有图像——包括广告和朋友圈。'},
-      {id:'ar4',title:'美的历程',author:'李泽厚',diff:3,
-        reason:'把中国几千年艺术和美学串成一条线讲。从青铜器到红楼梦，李泽厚让每一件作品都活在你面前。需要一点耐心，但回报很大。'},
-      {id:'ar5',title:'美学（黑格尔）',author:'黑格尔',diff:5,
-        reason:'西方美学理论的珠峰，但极难读。黑格尔把艺术、宗教、哲学盛在一个体系里讲。不需要从头读到尾，放在书架上，某天忽然想读一段时就翻开。'},
-    ],
-    pathBooks:[
-      {id:'ap1',title:'纽约摄影学院摄影教材（上册）',author:'纽约摄影学院',level:1,seq:1,
-        reason:'最好的摄影入门书，没有之一。上册就够了——把光圈、快门、ISO三个东西讲明白了，你就知道相机在干什么了。剩下的就是多拍。里面的练习可以一个一个做。'},
-      {id:'ap2',title:'顾城诗选',author:'顾城',level:1,seq:2,
-        reason:'顾城的诗干净到像小孩写的——但不是小孩。他用最简单的词说最复杂的事。"黑夜给了我黑色的眼睛，我却用它寻找光明"——就这一句，够你回味很多年。'},
-      {id:'ap3',title:'艺术的故事',author:'贡布里希',level:1,seq:3,
-        reason:'没有一句话是你不懂的。从原始人在洞穴里画野牛，一直到毕加索——贡布里希让你觉得艺术史不是"美术课"，是一个又一个真实的人在解决真实的问题。读完你会开始去美术馆。'},
-      {id:'ap4',title:'观看之道',author:'约翰·伯格',level:2,seq:4,
-        reason:'很薄，但很锋利。伯格让你意识到：你每天看到的所有图像——广告、新闻照片、朋友圈自拍——背后都有人在操控你的视线。读完你会开始"看见"那些你以前只是"看"的东西。'},
-      {id:'ap5',title:'美的历程',author:'李泽厚',level:2,seq:5,
-        reason:'把中国几千年的美串成了一条清晰的线。从青铜器的狞厉之美到宋元的淡远——李泽厚不是在讲"艺术史"，是在讲中国人怎么一步一步变成今天的审美方式。'},
-      {id:'ap6',title:'泰戈尔诗选',author:'泰戈尔',level:2,seq:6,
-        reason:'泰戈尔的诗像夏天的风——不重、不费劲，但每一句都会在你心里停很久。适合随时翻开、随时合上。不是"读完"的书，是"反复读"的书。'},
-      {id:'ap7',title:'写给大家的西方美术史',author:'蒋勋',level:2,seq:7,
-        reason:'蒋勋的风格有人爱有人嫌，但作为入门，他做到了最重要的事——让你觉得美是跟你有关系的。读完再去看《艺术的故事》或《美的历程》，门槛会低很多。'},
-    ]
-  }
+'value':{
+  id:'value',name:'价值投资',desc:'正统巴芒派，从《小狗钱钱》到《证券分析》',
+  color:'#9B2D26',
+  rulerBooks:[
+    {id:'vr1',title:'小狗钱钱',author:'博多·舍费尔',diff:1,
+      reason:'用故事讲钱，小孩都能看懂。读完你会开始想"我的钱现在在干什么"——这个念头比任何理财技巧都值钱。'},
+    {id:'vr2',title:'投资最重要的事',author:'霍华德·马克斯',diff:2,
+      reason:'巴菲特说自己每收到霍华德的 memo 都第一时间读。这本书把价值投资的核心理念讲得比《聪明的投资者》更贴近今天的市场——语言现代、逻辑极清。'},
+    {id:'vr3',title:'聪明的投资者',author:'本杰明·格雷厄姆',diff:3,
+      reason:'巴菲特的老师写的。不用全读——第八章"市场先生"和第二十章"安全边际"够你用一辈子。比《证券分析》好读很多，但需要一点耐心。'},
+    {id:'vr4',title:'证券分析（上·下）',author:'格雷厄姆 / 多德',diff:4,
+      reason:'硬核经典。别一上来就读——等前面几本书读完了，觉得准备好了，再翻开。它会等你。读不完也没关系，翻开本身就是一种仪式。'},
+  ],
+  pathBooks:[
+    {id:'vp1',title:'小狗钱钱',author:'博多·舍费尔',level:1,
+      reason:'最好的理财起点。用一个12岁女孩的故事，把"钱"讲得简单又有温度。读完你会开始记账——不是因为有人逼你，是你自己想。好读、有获得感。'},
+    {id:'vp2',title:'金钱心理学',author:'摩根·豪泽尔',level:1,
+      reason:'不讲技术讲心态——投资亏钱的原因，大部分不在选股，在你的脑回路。20个短章，每章一个洞见，像在读故事。一周能翻完。'},
+    {id:'vp3',title:'投资最重要的事',author:'霍华德·马克斯',level:2,
+      reason:'霍华德·马克斯做了几十年投资备忘录，每一篇都值得读。这本浓缩了他对风险、周期和"第二层思维"的理解——不是教你买什么，是教你怎么想。'},
+    {id:'vp4',title:'彼得·林奇的成功投资',author:'彼得·林奇',level:2,
+      reason:'最接地气的投资书之一。彼得·林奇说普通投资者完全可以跑赢基金经理——你只需要在你熟悉的领域找好公司。读起来像在跟一个很会讲笑话的朋友聊天。'},
+    {id:'vp5',title:'战胜华尔街',author:'彼得·林奇',level:2,
+      reason:'林奇的续集，偏实战。讲他如何管理麦哲伦基金，以及普通投资者如何建立自己的选股体系。好读程度不逊第一本。'},
+    {id:'vp6',title:'段永平投资问答录（投资逻辑篇）',author:'段永平',level:2,
+      reason:'段永平的网易博客和雪球问答整理。中国人里把巴菲特那套说得最透的一个。没有体系、就是问答——但每个回答都干净利落，看完会反复想。'},
+    {id:'vp7',title:'段永平投资问答录（商业逻辑篇）',author:'段永平',level:2,
+      reason:'和投资逻辑篇配套。这册偏"什么是好生意"——段永平自己做实业出身，分析商业模式的角度比纯投资者多了层实战感。'},
+    {id:'vp8',title:'漫步华尔街',author:'伯顿·马尔基尔',level:2,
+      reason:'从荷兰郁金香讲到互联网泡沫，把几百年的投机史串了一遍。结论很简单：普通人买指数基金最靠谱。但中间的故事太精彩了，你会一口气读完。'},
+    {id:'vp9',title:'金钱博弈',author:'单伟建',level:2,
+      reason:'单伟建写他如何代表新桥资本收购韩国第一银行。不是理论，是一个真实 deal 的全过程——谈判、博弈、文化冲突。像看一部商战纪录片。'},
+    {id:'vp10',title:'征服市场的人',author:'格里高利·祖克曼',level:2,
+      reason:'西蒙斯和大奖章基金的故事。一群数学家怎么用量化交易打败了所有传统投资者。好看程度堪比小说——即使你对量化没兴趣，人的故事也够精彩。'},
+    {id:'vp11',title:'聪明的投资者',author:'本杰明·格雷厄姆',level:3,
+      reason:'到这本了。不用怕——挑重点读：第八章"市场先生"和第二十章。市场先生的比喻会彻底改变你看待股价涨跌的方式。偏厚、需要耐心，但值得。'},
+    {id:'vp12',title:'穷查理宝典',author:'彼得·考夫曼',level:3,
+      reason:'芒格一辈子智慧的合集。不是教你赚钱，是教你怎么不犯傻。"反过来想，永远反过来想"——这句话够你用一辈子。随时翻开哪页都能读。'},
+    {id:'vp13',title:'芒格之道',author:'查理·芒格',level:3,
+      reason:'芒格在西科金融和每日期刊股东会上的发言实录。比《穷查理宝典》更原生态，更锋利，更敢说。适合已经读过《穷查理宝典》、还想多听老头说话的人。'},
+    {id:'vp14',title:'投资者的未来',author:'杰里米·西格尔',level:3,
+      reason:'西格尔用上百年数据回答一个问题：什么样的股票长期回报最高？答案出乎大多数人意料——不是科技股。数据密集但不枯燥，结论会改变你的配置思路。'},
+    {id:'vp15',title:'竞争优势',author:'布鲁斯·格林沃尔德',level:3,
+      reason:'格林沃尔德是芒格之外把"护城河"讲得最透的人。这本偏学术但不过于晦涩——核心就一个问题：一家公司凭什么挡住竞争对手？读完看公司会有全新的框架。'},
+    {id:'vp16',title:'笑傲牛熊',author:'史丹·温斯坦',level:3,
+      reason:'戴欣欣评9分。温斯坦的阶段分析法简单到不可思议——用一根30周均线分牛熊。技术分析的书多如牛毛，这本是少数经得起时间检验的。薄，好读。'},
+    {id:'vp17',title:'非理性繁荣',author:'罗伯特·席勒',level:3,
+      reason:'席勒在2000年互联网泡沫顶峰时写了这本书，精准预言了崩盘。他从心理学、社会学和经济学多维论证市场如何集体发疯。偏厚偏学术，但读完你不再会轻易被"这次不一样"说服。'},
+    {id:'vp18',title:'债务危机',author:'瑞·达利欧',level:3,
+      reason:'达利欧用他几十年的宏观研究框架分析历史上几十次债务危机。像一本金融病理学教科书——但案例太精彩了，会让你觉得在读历史而非经济学。偏厚。'},
+    {id:'vp19',title:'证券分析（上·下）',author:'格雷厄姆 / 多德',level:4,
+      reason:'你走到这里了。这本不好读——厚、密、需要静下心慢慢啃。读完它，你对"价值"的理解会和绝大多数投资者完全不同。不是必须读完，但如果你想成为认真的投资者——它在这儿等你。'},
+    // 经济子类
+    {id:'ve1',title:'置身事内',author:'兰小欢',level:1,
+      reason:'戴欣欣强推。讲中国政府和经济的关系——不是黑板上的经济学，是你每天生活的这个世界。好读到不像学术书。读完你会理解房价、地方债、和"为什么这事儿这么办"。'},
+    {id:'ve2',title:'经济学的思维方式',author:'托马斯·索维尔',level:2,
+      reason:'索维尔不用一个公式把经济学讲清楚了。核心讲"选择"和"激励"——读完你会用经济学的方式看世界，而不是被经济学吓跑。没有意识形态，只有逻辑。'},
+    {id:'ve3',title:'文明、现代化、价值投资与中国',author:'李录',level:2,
+      reason:'李录是芒格家族资产的唯一外部管理人。这本书一半讲人类文明史（从采集社会到现代），一半讲价值投资在中国怎么用。视野极大，但文字极好读。'},
+  ]
+},
+'china':{
+  id:'china',name:'理解中国与世界',desc:'政治·经济·历史，多元视角，不站队',
+  color:'#3A526B',
+  rulerBooks:[
+    {id:'cr1',title:'民主的细节',author:'刘瑜',diff:1,
+      reason:'刘瑜用在美国生活的小故事讲民主制度怎么运转。不宏大、不抽象——就是告诉你：民主不是口号，是无数具体规则的总和。好读到像在看杂志。'},
+    {id:'cr2',title:'万历十五年',author:'黄仁宇',diff:2,
+      reason:'六个小人物的命运，讲透一个大帝国的运转逻辑。好读到不像历史书——像在读小说，但每页都在教你看懂中国。中文写作的天花板。'},
+    {id:'cr3',title:'中国历代政治得失',author:'钱穆',diff:3,
+      reason:'钱穆用五次演讲把两千年政治制度梳理了一遍。不偏不倚，就事论事。读完你会对"中国为什么是中国"有自己的判断——不是别人告诉你的那种。'},
+    {id:'cr4',title:'史记（选读）',author:'司马迁',diff:4,
+      reason:'中国史学的源头。不用通读——挑你感兴趣的人物本纪和列传。司马迁写人物的能力，两千年来没人超过。读完你会觉得历史不是表格，是活生生的人。'},
+  ],
+  pathBooks:[
+    {id:'cp1',title:'民主的细节',author:'刘瑜',level:1,
+      reason:'最好的政治学入门。刘瑜不喊口号、不讲大道理，就是告诉你美国小镇上一个市议会怎么运作。读完你会发现"民主"不是非黑即白的事，是一堆具体规则的总和。非常好读。'},
+    {id:'cp2',title:'万历十五年',author:'黄仁宇',level:2,
+      reason:'不讲帝王将相的丰功伟绩，讲一个"无关紧要的年份"里，制度如何决定了每个人的命运。好读到停不下来，但读完你会对中国的制度逻辑有全新的理解。'},
+    {id:'cp3',title:'乡土中国',author:'费孝通',level:2,
+      reason:'不到200页，但每一页都在解释你身边的中国。"差序格局""熟人社会"这些概念，读完你会在大街小巷里反复看见它们。社会学的入门书，也是理解中国社会结构的入门书。'},
+    {id:'cp4',title:'叫魂：1768中国妖术大恐慌',author:'孔飞力',level:2,
+      reason:'一个"妖术"恐慌如何在1768年席卷半个中国——孔飞力用一个小切口，剖开了帝制中国的统治逻辑。故事性极强，像在读侦探小说，但每一章都在讲政治。'},
+    {id:'cp5',title:'中国通史',author:'傅乐成',level:2,
+      reason:'台湾学者写的中国通史。文字干净、不拖沓，适合想系统过一遍中国史但不知从哪开始的读者。不左不右，叙事为主，好读。'},
+    {id:'cp6',title:'观念的水位',author:'刘瑜',level:2,
+      reason:'刘瑜的随笔集。比《民主的细节》更偏国内议题——教育、言论、社会运动。文字一如既往的聪明好读，每一篇都在帮你"看见"那些习以为常的东西背后的逻辑。'},
+    {id:'cp7',title:'刘擎西方现代思想讲义',author:'刘擎',level:2,
+      reason:'刘擎在得到的课程整理成书。把罗尔斯、诺齐克、哈贝马斯这些现代思想家讲得清清楚楚——不是学术综述，是在回应今天的中国问题。读完你会发现自己讨论政治时更冷静了。'},
+    {id:'cp8',title:'党员、党权与党争',author:'王奇生',level:2,
+      reason:'讲1924-1949年国民党的组织运作。学术界公认的扎实之作——不是在讲"好人坏人"，是在讲一个政党的组织结构如何决定了它的命运。读完会对"组织"有全新认识。'},
+    {id:'cp9',title:'人类简史',author:'尤瓦尔·赫拉利',level:2,
+      reason:'三小时读完七万年。不是为了学历史，是为了换个角度看"我们到底在干什么"。赫拉利把人类几万年的故事讲得像脱口秀——每一章都在质疑你以为理所当然的事。强推。'},
+    {id:'cp10',title:'中国历代政治得失',author:'钱穆',level:3,
+      reason:'钱穆把汉唐宋明清的制度摊开给你看。不站左不站右，只是告诉你每个朝代怎么选官、怎么收税、怎么管军队。读完你会对"改革为什么难"有自己的答案。半白话，需要一点耐心。'},
+    {id:'cp11',title:'邓小平时代',author:'傅高义',level:3,
+      reason:'一个美国学者写的当代中国史。资料扎实、叙述克制。厚，但每一章都让你更理解今天的中国从何而来——改革开放不是某个人的灵光一现，是一大群人在极端困难下硬推出来的。'},
+    {id:'cp12',title:'天朝的崩溃：鸦片战争再研究',author:'茅海建',level:3,
+      reason:'茅海建把鸦片战争重新讲了一遍——不是"落后就要挨打"的简单叙事，而是把每个人的决策、误判和信息不对称摊开看。读完你会对历史的"必然性"打一个大问号。'},
+    {id:'cp13',title:'联合政府与一党训政',author:'邓野',level:3,
+      reason:'讲1944-1946年国共两党围绕联合政府的博弈。邓野用档案说话——不是谁胜利了谁就有理，是双方在真实约束下做出了怎样的选择。需要一点民国史基础。'},
+    {id:'cp14',title:'「中间地带」的革命',author:'杨奎松',level:3,
+      reason:'从国际关系的角度重述中共革命的成功之路。杨奎松是国内党史研究最好的学者之一——他让你看到中国革命不是孤立发生的，是整个国际格局中的一步棋。学术性偏强。'},
+    {id:'cp15',title:'告别百年激进',author:'温铁军',level:3,
+      reason:'温铁军给你一个完全不同的视角看中国现代化——从"三农"出发，质疑主流发展叙事。不管你同不同意他，读完你会发现自己以前想得太简单了。'},
+    {id:'cp16',title:'南明史（顾诚·上下）',author:'顾诚',level:3,
+      reason:'明亡后南明政权的完整历史。顾诚把一个被忽略的时代写活了——不是一个王朝的凄凉尾声，是一群人在绝境中的挣扎和选择。偏厚、偏学术，但喜欢明史的人会读进去。'},
+    {id:'cp17',title:'全球通史',author:'斯塔夫里阿诺斯',level:3,
+      reason:'从史前写到21世纪，把各个文明的兴衰放在一个框架里讲。偏厚——但作为建立世界史坐标系的一本书，它是最好的选择之一。读完你不会再只看中国。'},
+    {id:'cp18',title:'枪炮、病菌与钢铁',author:'贾雷德·戴蒙德',level:3,
+      reason:'为什么是欧洲人征服了美洲而不是反过来？戴蒙德用地理、生物和技术的长链条给了答案。读完"地理决定论"不再是标签——你会看到具体的因果链。'},
+    {id:'cp19',title:'昨日的世界',author:'斯蒂芬·茨威格',level:3,
+      reason:'戴欣欣评9分。茨威格写他的欧洲——从一战前的黄金时代到纳粹上台后的崩溃。不是一个历史学家的分析，是一个亲历者的回忆。读完你会理解"文明"有多脆弱，又有多珍贵。'},
+    {id:'cp20',title:'文明的冲突与世界秩序的重建',author:'亨廷顿',level:3,
+      reason:'亨廷顿在冷战结束后预言：未来的冲突不在意识形态之间，在文明之间。三十年后再读——有些说中了，有些没中。但框架本身至今是最有解释力的之一。'},
+    {id:'cp21',title:'斯大林：权力的悖论（上·下·港版）',author:'斯蒂芬·科特金',level:3,
+      reason:'不是斯大林传，是斯大林体制怎么从俄国内部长出来的。科特金的研究密度极高，但每一页都在颠覆你"对独裁的刻板印象"。港版翻译质量好于简体版。'},
+    {id:'cp22',title:'第三帝国三部曲',author:'理查德·埃文斯',level:3,
+      reason:'目前最好的纳粹德国通史。从魏玛共和国的脆弱讲到战后的审判——埃文斯让"普通人为什么支持纳粹"这个问题变得具体而非抽象。三卷很厚，但叙事感强。'},
+    {id:'cp23',title:'1453 / 地中海三部曲',author:'罗杰·克劳利',level:3,
+      reason:'从君士坦丁堡的陷落写到威尼斯共和国的崛起。克劳利写历史像写电影剧本——攻城战的细节、航海的风险、人物的野心，画面感极强。不需要欧洲史基础。'},
+    {id:'cp24',title:'史记（选读）',author:'司马迁',level:4,
+      reason:'中国史学的源头。不用通读——从项羽本纪、刺客列传、货殖列传这些最精彩的篇目切入。读原文（带注释的版本），感受一下两千年前的中文能好到什么程度。'},
+  ]
+},
+'philo':{
+  id:'philo',name:'哲学与存在',desc:'从《苏菲的世界》到《理想国》，可读的思想史',
+  color:'#3D5C4A',
+  rulerBooks:[
+    {id:'pr1',title:'被讨厌的勇气',author:'岸见一郎 / 古贺史健',diff:1,
+      reason:'对话体，一个晚上能读完。阿德勒心理学用最简单的对话讲出来——核心就一句：你的不幸，是你自己选的。听完不舒服，但有用。'},
+    {id:'pr2',title:'苏菲的世界',author:'乔斯坦·贾德',diff:1,
+      reason:'用小说的壳装了一部西方哲学史。跟着苏菲的信一封封拆下去，两千年的哲学家一个个认识过去。最好的哲学入门——没有一个字是唬人的。'},
+    {id:'pr3',title:'中国哲学简史',author:'冯友兰',diff:2,
+      reason:'冯友兰用不到三百页把中国哲学讲完了。干净、不废话。读完你会理解儒道释各家在回答什么问题——以及这些问题跟你今天的烦恼有什么关系。'},
+    {id:'pr4',title:'理想国',author:'柏拉图',diff:3,
+      reason:'西方哲学的总源头。柏拉图用对话形式追问"什么是正义"——两千四百年了，还没有人给出更好的回答。需要一点耐心跟着苏格拉底走，但走进去会着迷。'},
+    {id:'pr5',title:'资本论（选读）',author:'卡尔·马克思',diff:4,
+      reason:'几个世纪以来最有影响力的书之一。不用通读——选第一卷的核心章节配合导读。马克思分析资本主义的方式，至今没有过时——不管你同不同意他的结论。仅推给最高水平者。'},
+  ],
+  pathBooks:[
+    {id:'pp1',title:'被讨厌的勇气',author:'岸见一郎 / 古贺史健',level:1,
+      reason:'一个晚上能读完，但可能会改变你之后很多年的活法。不是喊口号式的"做自己"——阿德勒用逻辑推给你看：你不必活在别人的期待里。读完会轻快很多。'},
+    {id:'pp2',title:'苏菲的世界',author:'乔斯坦·贾德',level:1,
+      reason:'最好的哲学入门书，没有之一。从古希腊一路走到当代，每个哲学家都像认识了一个新朋友。读完你不再觉得"哲学"是象牙塔里的东西——它就是在问"我该怎么活"。'},
+    {id:'pp3',title:'悉达多',author:'赫尔曼·黑塞',level:1,
+      reason:'戴欣欣评8分。一个印度贵族青年寻找自我的故事，写的其实是每一个认真活过的人。黑塞的语言像诗——读完你会安静很久。不是消沉，是想通了的那种安静。'},
+    {id:'pp4',title:'当尼采哭泣',author:'欧文·亚隆',level:1,
+      reason:'心理小说。亚隆虚构了尼采和布雷尔医生的相遇——用小说的方式讲存在主义心理治疗。好读到停不下来，读完你会顺便理解了尼采的一些核心思想。'},
+    {id:'pp5',title:'蛤蟆先生去看心理医生',author:'罗伯特·戴博德',level:1,
+      reason:'用《柳林风声》的角色讲了一次完整的心理咨询。薄、好读、但每一章都在戳你的一个盲点。读完你会发现"改变"这件事的阻力，很多时候来自你自己。'},
+    {id:'pp6',title:'掌控习惯',author:'詹姆斯·克利尔',level:1,
+      reason:'不是鸡汤，是一套可操作的"习惯搭建系统"。不讲意志力、不讲自律——讲的是如何设计环境让好习惯自动发生。每章后面有具体练习。好读、立即可用。'},
+    {id:'pp7',title:'大问题：简明哲学导论',author:'罗伯特·所罗门',level:2,
+      reason:'美国大学最常用的哲学导论教材。不讲哲学史年表，而是从"自由""知识""上帝""死亡"这些大问题出发，一个一个讲各路哲学家怎么回答。文字极其平易。'},
+    {id:'pp8',title:'哲学的故事',author:'威尔·杜兰特',level:2,
+      reason:'杜兰特把每个大哲学家的生平和思想串成故事讲。文笔极好——读起来不像哲学史，像人物传记合集。最适合读过《苏菲的世界》后深入的人。'},
+    {id:'pp9',title:'中国哲学简史',author:'冯友兰',level:2,
+      reason:'用极干净的中文把中国哲学讲清楚了。冯友兰不卖弄、不玄虚——孔子在讲什么、庄子在反抗什么、禅宗在做什么，读完全明白。评8分。'},
+    {id:'pp10',title:'局外人',author:'阿尔贝·加缪',level:2,
+      reason:'加缪用极简的语言写了一个"对一切无所谓"的人。薄薄一本，但读完会在你心里停很久。核心问题：如果人生没有预设的意义，我该怎么活？'},
+    {id:'pp11',title:'沉思录',author:'马可·奥勒留',level:2,
+      reason:'一个罗马皇帝在战争间隙写给自己的日记。不装、不说教——就是一个位高权重的人不断提醒自己：什么重要、什么不重要。睡前翻几页，比任何鸡汤都好用。可以读一辈子。'},
+    {id:'pp12',title:'稀缺',author:'穆来纳森',level:2,
+      reason:'戴欣欣评8.5分。讲贫穷和忙碌如何让人"变笨"——不是因为穷人不努力，是稀缺本身占用了认知带宽。读完之后你对自己的很多决策会有新的解释。'},
+    {id:'pp13',title:'影响力',author:'罗伯特·西奥迪尼',level:2,
+      reason:'社会心理学经典。不是教你忽悠人——是教你怎么不被忽悠。互惠、承诺、社会认同……七个原则，每一个都会让你恍然大悟"原来上次我就是这样被套路的"。好读。'},
+    {id:'pp14',title:'乌合之众',author:'古斯塔夫·勒庞',level:2,
+      reason:'一百多年前写的群体心理学，今天读仍然让人脊背发凉。不是严谨的学术论证，但观察太犀利了——读完你会对"群体情绪"有全新的警惕。薄，一个下午读完。'},
+    {id:'pp15',title:'西西弗神话',author:'阿尔贝·加缪',level:3,
+      reason:'戴欣欣评7分（不是不好，是偏难）。加缪开篇就说："真正严肃的哲学问题只有一个，就是自杀。"然后论证为什么人生值得过。偏文学、偏诗意，需要慢慢读。'},
+    {id:'pp16',title:'西方哲学史',author:'伯特兰·罗素',level:3,
+      reason:'罗素用他一贯的机智和刻薄写完了西方哲学史。不是最严谨的——但一定是最有趣的哲学史之一。罗素的文笔让枯燥的哲学变得像在看脱口秀。偏厚。'},
+    {id:'pp17',title:'理想国',author:'柏拉图',level:3,
+      reason:'西方哲学的总源头。苏格拉底用对话一层层追问"正义是什么"——他的结论你可能不同意，但他的追问方式会让你上瘾。找好的译本很重要，推荐商务印书馆版本。'},
+    {id:'pp18',title:'论语',author:'孔子弟子',level:3,
+      reason:'中国文化的源代码。不要当"国学经典"恭敬地读——就当是一个老师和他一群学生的日常对话录。推荐配合杨伯峻的《论语译注》，注释极好。每读一次，理解的维度多一层。'},
+    {id:'pp19',title:'道德经',author:'老子',level:3,
+      reason:'五千字讲完了一套完整的世界观。不是"玄学"——是极其冷酷地对世界运行规律的观察。"天地不仁以万物为刍狗"这一句，够想一辈子。推荐陈鼓应的《老子注译及评介》。'},
+    {id:'pp20',title:'阿特拉斯耸耸肩',author:'安·兰德',level:3,
+      reason:'安·兰德用一部长篇小说讲她的客观主义哲学——极端推崇个人理性和自由市场。不是每个人都会同意她，但她的论述方式会逼你重新审视自己"默认"的理念。推中文版，篇幅巨大但好读。'},
+    {id:'pp21',title:'源泉',author:'安·兰德',level:3,
+      reason:'比《阿特拉斯耸耸肩》更紧凑。一个建筑师拒绝向世界妥协的故事——安·兰德在讲"创造者vs二手货"的对立。读完你会想：我在自己的领域里，是建筑师还是模仿者？'},
+    {id:'pp22',title:'思考，快与慢',author:'丹尼尔·卡尼曼',level:3,
+      reason:'诺贝尔经济学奖得主把他几十年的研究写成了一本普通人能看的书。系统1和系统2的框架会让你重新理解自己做的每一个决定——包括这本书里的。偏厚偏学术，但每一章都有"啊哈"时刻。'},
+    {id:'pp23',title:'资本论（选读）',author:'卡尔·马克思',level:4,
+      reason:'不是让你全读。找个好的导读（推荐大卫·哈维的《跟大卫·哈维读资本论》），配合第一卷核心章节。马克思对资本主义的解剖——剩余价值、商品拜物教、危机循环——至今是最好的分析工具之一。仅推给最高水平者。'},
+  ]
+},
+'aesth':{
+  id:'aesth',name:'审美',desc:'摄影·诗·美学·小说，戴欣欣的独特标签',
+  color:'#B8944A',
+  rulerBooks:[
+    {id:'ar1',title:'活着',author:'余华',diff:1,
+      reason:'余华用最朴素的文字写了一个普通人极其不普通的一生。好读到一口气看完——但看完会安静很久。不用任何文学理论，你都能感受到"好小说"的力量。'},
+    {id:'ar2',title:'艺术的故事',author:'贡布里希',diff:2,
+      reason:'没有一句学术黑话的艺术史。从洞穴壁画讲到现代艺术，贡布里希像讲故事一样讲艺术——读完你去美术馆会有完全不同的眼光。入门圣经。'},
+    {id:'ar3',title:'三体（全集）',author:'刘慈欣',diff:2,
+      reason:'中国最好的科幻，也是全世界最好的科幻之一。刘慈欣把宇宙社会学、黑暗森林法则这些概念变成了一次过山车式的阅读体验。强推——不管你是不是科幻迷。'},
+    {id:'ar4',title:'百年孤独',author:'加西亚·马尔克斯',diff:3,
+      reason:'魔幻现实主义的巅峰。一个家族七代人的命运，写尽了一个大陆的苦难和瑰丽。开头第一句就让你知道这本书不一样。名字多、需要耐心——但值得。'},
+    {id:'ar5',title:'尤利西斯（上·下）',author:'詹姆斯·乔伊斯',diff:4,
+      reason:'二十世纪最重要的小说之一，也是公认最难读的之一。乔伊斯把都柏林一天24小时写成了上千页的意识流迷宫。天书级别——不是给你现在读的，是放在书架上，等你准备好了再挑战。'},
+  ],
+  pathBooks:[
+    {id:'ap1',title:'DK温迪嬷嬷讲述1000幅世界名画',author:'温迪·贝克特',level:1,
+      reason:'一页一幅画，一段简短的解说。没有学术术语，就是一个修女用最朴实的语言告诉你这幅画好在哪。适合放在茶几上，随时翻看。最好的艺术入门，零门槛。'},
+    {id:'ap2',title:'活着',author:'余华',level:1,
+      reason:'余华用最朴素的文字写了一个普通人极其不普通的一生。好读到一口气看完——但看完会安静很久。不是让你"学文学"，是让你体验一次"好故事能好到什么程度"。'},
+    {id:'ap3',title:'苏东坡新传（上·下）',author:'李一冰',level:1,
+      reason:'不是学术传记，是一个懂苏东坡的人写给另一个想了解苏东坡的人。李一冰写苏东坡，像在写一个老朋友。好读、有温度。读完你会忍不住去读苏轼的诗词。'},
+    {id:'ap4',title:'飞鸟集',author:'泰戈尔',level:1,
+      reason:'每首只有两三行，但每一首都会在你心里停很久。适合随时翻开、随时合上。不是"读完"的书，是"反复读"的书——放在床头，睡前翻几页。'},
+    {id:'ap5',title:'唐诗三百首 / 宋词三百首',author:'蘅塘退士 等编',level:1,
+      reason:'不需要"学"——就是读。每天看一首，遇到喜欢的背下来。过几年你会发现这些句子在你生命的不同时刻自动浮现。中国文化的共同母语。'},
+    {id:'ap6',title:'四世同堂（足本三部）',author:'老舍',level:1,
+      reason:'老舍最好的一部小说。北平沦陷后一条胡同里的众生相——不是宏大叙事，是小人物的日常。好读，但读完你会对中国人的韧性有全新的理解。'},
+    {id:'ap7',title:'月亮与六便士',author:'毛姆',level:1,
+      reason:'一个中年股票经纪人突然抛下一切去画画——毛姆用这个故事追问"人生到底该追求什么"。好读、不装，但读完会让你好几天都在想：我在追月亮，还是在捡六便士？'},
+    {id:'ap8',title:'老人与海',author:'海明威',level:1,
+      reason:'海明威用最少的字写了最深的故事。一个老渔夫和大鱼搏斗了两天两夜——表面上在讲捕鱼，实际上在讲人的尊严。薄到可以站在书店里读完，但读完会在心里刻很久。'},
+    {id:'ap9',title:'查令十字街84号',author:'海莲·汉芙',level:1,
+      reason:'戴欣欣评9分。一个纽约女作家和一个伦敦书商二十年来的通信集。没有曲折的情节——就是两个爱书人之间的温暖。读完你会想去写信，或者至少，去逛一家旧书店。'},
+    {id:'ap10',title:'艺术的故事',author:'贡布里希',level:2,
+      reason:'没有一句话是你不懂的。从原始人在洞穴里画野牛，一直到毕加索——贡布里希让你觉得艺术史不是"美术课"，是一个又一个真实的人在解决真实的问题。读完你会开始去美术馆。'},
+    {id:'ap11',title:'现代艺术150年',author:'威尔·贡培兹',level:2,
+      reason:'讲现代艺术怎么从印象派一路走到今天的。贡培兹写得极好玩——毕加索、杜尚、沃霍尔，每个人都被写活了。读完你再也不会说"现代艺术我看不懂"了。'},
+    {id:'ap12',title:'美国纽约摄影学院摄影教材（上·下）',author:'纽约摄影学院',level:2,
+      reason:'全世界销量最高的摄影教材。上册把曝光三要素和构图讲清楚就够了。不是教你"怎么拍好看"——是教你"怎么用相机看见你以前看不见的东西"。适合配合相机边看边练。'},
+    {id:'ap13',title:'见证历史：普利策新闻摄影奖',author:'哈尔·比尔',level:2,
+      reason:'每一页一张获奖照片，一段背景故事。不是"摄影技巧"书——是"摄影为什么重要"的书。看完你会明白一张好照片的力量，不在于它多美，在于它让人无法移开视线。'},
+    {id:'ap14',title:'海子的诗 / 顾城的诗',author:'海子 / 顾城',level:2,
+      reason:'中国当代最好的两位诗人。海子热烈，顾城干净。不必一页页读——翻开哪首读哪首。读诗不需要"理解"，需要的是被击中。这两本，大概率会有句子击中你。'},
+    {id:'ap15',title:'谈美',author:'朱光潜',level:2,
+      reason:'朱光潜用信的形式写给年轻人，讲"美是什么"。薄薄一本，但每一页都在提醒你——美不是奢侈品，是你每天都能感知到的东西。真正的大师写小书，句句不浪费。'},
+    {id:'ap16',title:'沉默的大多数',author:'王小波',level:2,
+      reason:'王小波杂文的自选集。每一篇都幽默、锋利、不留情面。他让你觉得"独立思考"不是苦差事，是件有趣的事。读完你会开始用王小波的语气在心里吐槽。'},
+    {id:'ap17',title:'围城',author:'钱锺书',level:2,
+      reason:'钱锺书用一部小说把知识分子的弱点和可爱写透了。每一页都有让你笑出声的比喻——但笑完你会发现他写的是每个人。"围城"这个词，后来成了一代人的共同语。'},
+    {id:'ap18',title:'白鹿原',author:'陈忠实',level:2,
+      reason:'一部渭河平原的五十年史诗。两个家族的恩怨背后，是整个中国从清末到解放的剧变。好读到会让你熬夜——但读完你会觉得跟着白鹿原上的人一起活了一辈子。'},
+    {id:'ap19',title:'1984',author:'乔治·奥威尔',level:2,
+      reason:'不是"反乌托邦小说"，是一面镜子。奥威尔1948年写的很多事，今天读来让你觉得他不是在预言——他只是在观察。薄、好读，但每一页都在敲打你的神经。'},
+    {id:'ap20',title:'你当像鸟飞往你的山',author:'塔拉·韦斯特弗',level:2,
+      reason:'戴欣欣评9分。一个在爱达荷山区极端摩门教家庭长大的女孩——17岁前没上过学，最后拿到剑桥博士。不是励志故事，是一个人如何在爱家人和做自己之间撕裂的真实记录。'},
+    {id:'ap21',title:'三体（全集）',author:'刘慈欣',level:2,
+      reason:'从这里开始，阅读变成享受。刘慈欣创造了一个你从未见过的宇宙——但不是靠技术名词，是靠想象力的极限。黑暗森林法则、降维打击，读完你会满脑子都是这些概念。强推。'},
+    {id:'ap22',title:'STORY 故事',author:'罗伯特·麦基',level:2,
+      reason:'全世界编剧的教科书。但不是写剧本的人才能读——麦基在讲"故事为什么打动人"的底层原理。读完你看电影会有一个全新的维度：不再只是"好看"，而是"为什么好看"。'},
+    {id:'ap23',title:'百年孤独',author:'加西亚·马尔克斯',level:3,
+      reason:'魔幻现实主义的巅峰。一个家族七代人的命运，写尽了拉美的苦难和瑰丽。开头第一句就让你知道这本书不一样——"多年以后，面对行刑队……"。名字多、需要耐心，但读完你会觉得所有书都轻了几斤。'},
+    {id:'ap24',title:'红楼梦',author:'曹雪芹',level:3,
+      reason:'不解释。中国文学的最高峰。如果这辈子只读一部中国小说，就是它。不是"古典名著所以必须读"——是真的好到让你觉得几百年的赞誉都还不够。'},{id:'ap25',title:'罪与罚',author:'陀思妥耶夫斯基',level:3,
+      reason:'一个穷大学生杀了人，然后在几百页里不断拷问自己：我有权利这么做吗？陀思妥耶夫斯基把你拖进人类心理的最深处——读完你会对"罪恶"和"救赎"有全新的理解。'},
+    {id:'ap26',title:'悲惨世界（上·中·下）',author:'维克多·雨果',level:3,
+      reason:'雨果用一部长篇小说追问"法律和正义是不是同一件事"。冉阿让、沙威、芳汀——这些人物的命运会让你在深夜合上书久久不能平静。篇幅巨大但叙事太强了，跟着走就不觉得长。'},
+    {id:'ap27',title:'战争与和平',author:'列夫·托尔斯泰',level:4,
+      reason:'托尔斯泰在一部小说里盛下了全部人生——爱、战争、死亡、信仰。不是"难读"——是"太大"。需要你有一段安静的时间，慢慢沉进去。进去之后，出来就不一样了。'},
+    {id:'ap28',title:'安娜·卡列尼娜',author:'列夫·托尔斯泰',level:3,
+      reason:'托尔斯泰写婚姻、爱情和社会，笔力无人能及。安娜的故事只是故事的一半——另一半是列文在农村的沉思。两个世界对照读，你看到的是整个十九世纪俄国社会的横切面。'},
+    {id:'ap29',title:'复活',author:'列夫·托尔斯泰',level:3,
+      reason:'托尔斯泰晚年最成熟的作品。一个贵族少爷和一个农奴少女，因为一次相遇，两个人的一生都被改变了。不是爱情故事，是关于"人能不能重新活一次"。'},
+    {id:'ap30',title:'雕刻时光',author:'安德烈·塔可夫斯基',level:3,
+      reason:'电影史上最伟大的导演之一写他对电影、时间和生命的理解。不是"教你拍电影"——是一个艺术家在分享他怎么看世界。有些段落偏晦涩，但每读一段就会停下来想很久。'},
+    {id:'ap31',title:'尤利西斯（上·下）',author:'詹姆斯·乔伊斯',level:4,
+      reason:'天书。二十世纪最重要的小说之一，也是最难读的之一。乔伊斯把都柏林一天24小时写成了上千页的意识流迷宫。不是给你现在读的——放在书架上，某天你觉得自己准备好了，再翻开。'},
+  ]
+}
 };
 
 // ============================================================
-// 状态管理
+// 状态
 // ============================================================
 const ST = (()=>{
-  const raw = localStorage.getItem('dx_bookshelf');
+  const raw = localStorage.getItem('dx_bookshelf2');
   if(raw) try{return JSON.parse(raw);}catch(e){}
   return {readIds:[], levels:{}, awaitingPace:false};
 })();
-function save(){localStorage.setItem('dx_bookshelf',JSON.stringify(ST));}
+function save(){localStorage.setItem('dx_bookshelf2',JSON.stringify(ST));}
 
-let currentPath = 'value';
-let currentView = 'paths';
+let currentPath = 'value', currentView = 'paths';
 let assessSelections = new Set();
 
 // ============================================================
@@ -277,46 +429,44 @@ function render(){
   else if(currentView==='recommend') renderRecommend();
 }
 
-// ---- 路径选择 ----
 function renderPaths(){
   const cards = Object.values(PATHS).map(p=>{
-    const hasLevel = ST.levels[p.id];
+    const has = ST.levels[p.id];
     return `<div class="path-card" data-path="${p.id}">
       <div class="path-strip" style="background:${p.color}"></div>
       <div class="path-body">
         <h3>${p.name}</h3>
         <div class="desc">${p.desc}</div>
-        <div class="path-tag">${hasLevel ? '已测：'+levelLabel(hasLevel) : '入门→进阶→硬核'}</div>
+        <div class="path-tag">${has?'已测：'+LV[has]:'入门→进阶→高阶→最高阶'}</div>
       </div>
     </div>`;
   }).join('');
-
-  view().innerHTML = `<div class="path-list">${cards}</div>`;
+  view().innerHTML=`<div class="path-list">${cards}</div>`;
   view().querySelectorAll('.path-card').forEach(c=>{
     c.onclick=()=>{currentPath=c.dataset.path;currentView='assess';render();window.scrollTo(0,0);};
   });
 }
 
-// ---- 标尺书判定 ----
 function renderAssess(){
   const p = PATHS[currentPath];
   const prev = ST.levels[currentPath];
   assessSelections = new Set();
+  const spin = p.color;
 
   view().innerHTML = `
-    <div class="back" id="backBtn">← 返回</div>
-    <h2 style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun','FangSong',serif;font-size:23px;font-weight:700;margin-bottom:4px;letter-spacing:.04em">${p.name}</h2>
-    <p class="ruler-intro">这些书从<strong>最容易到最难</strong>排列。<br>勾出你<strong>真正读过的</strong>——系统会判断你的段位，同时帮你排除已读书。</p>
-    <div class="ruler-list" id="rulerList"></div>
-    <div class="ruler-action">
-      ${prev ? '<div class="ruler-hint">上次判定：<strong>'+levelLabel(prev)+'</strong></div>' : ''}
+    <button class="back" id="backBtn">← 返回路径</button>
+    <h2 style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun','FangSong',serif;font-size:23px;font-weight:700;margin-bottom:6px;letter-spacing:.06em">${p.name}</h2>
+    <p class="ruler-intro">从易到难排列。<strong>勾出你读过的</strong>，系统自动判断你的段位。</p>
+    <div class="ruler-list" id="rulerList" style="--spine:${spin}"></div>
+    <div class="ruler-sticky">
+      ${prev ? '<div class="ruler-hint">上次判定：<strong>'+LV[prev]+'</strong></div>' : ''}
       <button class="btn btn-primary" id="assessBtn">我一都没读过，直接看推荐 →</button>
     </div>
   `;
   document.getElementById('backBtn').onclick=()=>{currentView='paths';render();};
 
   const list = document.getElementById('rulerList');
-  const diffLabels = {1:'很容易',2:'好读',3:'需要耐心',4:'偏难',5:'硬核'};
+  const dl = {1:'★ 好读',2:'★★ 进阶',3:'★★★ 高阶',4:'★★★★ 最高阶'};
   p.rulerBooks.forEach((b,i)=>{
     if(ST.readIds.includes(b.id)) assessSelections.add(b.id);
     const sel = assessSelections.has(b.id);
@@ -327,26 +477,23 @@ function renderAssess(){
       <div class="ruler-body">
         <div class="ruler-check"></div>
         <div class="ruler-info"><div class="b-title">${b.title}</div><div class="b-author">${b.author}</div></div>
-        <div class="ruler-diff">${'★'.repeat(b.diff)}<span>${diffLabels[b.diff]||''}</span></div>
+        <div class="ruler-diff"><span>${dl[b.diff]||''}</span></div>
       </div>
     `;
     div.querySelector('.ruler-body').onclick=()=>{
       if(assessSelections.has(b.id)) assessSelections.delete(b.id);
       else assessSelections.add(b.id);
-      renderAssessState(list, p);
+      refreshAssess(list, p);
     };
     list.appendChild(div);
   });
 
-  function renderAssessState(listEl, pathObj){
-    const items = listEl.querySelectorAll('.ruler-item');
-    items.forEach((item,j)=>{
-      const bid = pathObj.rulerBooks[j].id;
-      if(assessSelections.has(bid)) item.classList.add('selected');
+  function refreshAssess(listEl, pathObj){
+    listEl.querySelectorAll('.ruler-item').forEach((item,j)=>{
+      if(assessSelections.has(pathObj.rulerBooks[j].id)) item.classList.add('selected');
       else item.classList.remove('selected');
     });
-    const btn = document.getElementById('assessBtn');
-    btn.textContent = assessSelections.size ? '测好了，看推荐 →' : '我一都没读过，直接看推荐 →';
+    document.getElementById('assessBtn').textContent = assessSelections.size ? '测好了，看推荐 →' : '我一都没读过，直接看推荐 →';
   }
 
   document.getElementById('assessBtn').onclick=()=>{
@@ -356,132 +503,113 @@ function renderAssess(){
       if(rb && rb.diff>maxDiff) maxDiff = rb.diff;
     });
     let level;
-    if(maxDiff>=4) level='深耕';
-    else if(maxDiff>=2) level='进阶';
-    else level='入门';
-
+    if(maxDiff>=4) level=4;
+    else if(maxDiff>=3) level=3;
+    else if(maxDiff>=2) level=2;
+    else level=1;
     ST.levels[currentPath] = level;
     assessSelections.forEach(id=>{if(!ST.readIds.includes(id)) ST.readIds.push(id);});
     save();
-    currentView='recommend';
-    render();
+    currentView='recommend'; render();
     window.scrollTo(0,0);
   };
 }
 
-// ---- 推荐结果 ----
 function renderRecommend(){
   const p = PATHS[currentPath];
-  const level = ST.levels[currentPath]||'入门';
-  const levelNum = {入门:1,进阶:2,深耕:3}[level];
+  const level = ST.levels[currentPath]||1;
+  const spin = p.color;
 
-  // 模式1：节奏控制（刚标记读完）
+  // A5: 节奏控制
   if(ST.awaitingPace){
-    const sameCount = p.pathBooks.filter(b=>b.level===levelNum && !ST.readIds.includes(b.id)).length;
-    const hasDeeper = p.pathBooks.some(b=>b.level>levelNum && !ST.readIds.includes(b.id));
+    const sameCount = p.pathBooks.filter(b=>b.level===level && !ST.readIds.includes(b.id)).length;
+    const hasDeeper = p.pathBooks.some(b=>b.level>level && !ST.readIds.includes(b.id));
     view().innerHTML = `
-      <div class="back" id="backBtn">← 重测水平</div>
+      <button class="back" id="backBtn">← 重测水平</button>
       <div style="margin-bottom:12px">
-        <span style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun','FangSong',serif;font-size:21px;font-weight:700;letter-spacing:.04em">${p.name}</span>
-        <span class="level-badge l${levelNum}">${levelLabel(level)}</span>
+        <span style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun','FangSong',serif;font-size:21px;font-weight:700;letter-spacing:.06em">${p.name}</span>
+        <span class="level-badge l${level}">${LV[level]}</span>
       </div>
-      <div class="result-card"><div class="result-strip" style="background:${p.color}"></div>
+      <div class="result-card"><div class="result-strip" style="background:${spin}"></div>
         <div class="result-body" style="text-align:center;padding:32px 24px">
-          <div style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun','FangSong',serif;font-size:21px;font-weight:700;margin-bottom:8px;letter-spacing:.04em">已标记 ✓</div>
+          <div style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun','FangSong',serif;font-size:21px;font-weight:700;margin-bottom:8px;letter-spacing:.06em">已标记 ✓</div>
           <div style="font-size:14px;color:#5C554D;margin-bottom:24px">下一本，你想怎么走？</div>
-          <div class="result-acts">
-            ${sameCount>0 ? `<button class="btn btn-outline" id="paceSame">同级别再来几本（还有 ${sameCount} 本）</button>` : ''}
-            ${hasDeeper ? `<button class="btn btn-primary" id="paceDeep">我想读更深的 →</button>` : ''}
-            ${!sameCount && !hasDeeper ? `<div class="done-msg"><div class="icon">🎉</div><p>这条路径上的书你全部读完了。<br>好样的。</p></div>` : ''}
+          <div class="pace-btns">
+            <button class="btn ${sameCount>0?'btn-outline':'btn-outline'}" id="paceSame" ${sameCount===0?'disabled style="opacity:.35;pointer-events:none"':''}>同级别再来一本${sameCount>0?'（还有 '+sameCount+' 本）':'（暂无更多）'}</button>
+            <button class="btn btn-primary" id="paceDeep" ${!hasDeeper?'disabled style="opacity:.35;pointer-events:none"':''}>我想读更深的 →${!hasDeeper?'（已到最后）':''}</button>
           </div>
+          ${!sameCount && !hasDeeper ? '<p style="font-size:13px;color:#8B8580;margin-top:12px">这条路径上的书你全部读完了。好样的。</p>' : ''}
         </div>
       </div>
     `;
     document.getElementById('backBtn').onclick=()=>{ST.awaitingPace=false;save();currentView='assess';render();};
     const sameBtn = document.getElementById('paceSame');
-    if(sameBtn) sameBtn.onclick=()=>{ST.awaitingPace=false;save();render();};
+    if(sameBtn && sameCount>0) sameBtn.onclick=()=>{ST.awaitingPace=false;save();render();};
     const deepBtn = document.getElementById('paceDeep');
-    if(deepBtn) deepBtn.onclick=()=>{
+    if(deepBtn && hasDeeper) deepBtn.onclick=()=>{
       ST.awaitingPace=false;
-      ST.levels[currentPath] = {1:'入门',2:'进阶',3:'深耕'}[Math.min(levelNum+1,3)];
+      ST.levels[currentPath] = Math.min(level+1, 4);
       save();render();
     };
     return;
   }
 
-  // 模式2：推荐下一本
+  // 推荐下一本
   const candidates = p.pathBooks.filter(b=>!ST.readIds.includes(b.id));
-  const sameLevel = candidates.filter(b=>b.level===levelNum);
+  const sameLevel = candidates.filter(b=>b.level===level);
   const nextBook = sameLevel.length>0 ? sameLevel[0] : (candidates.length>0 ? candidates[0] : null);
-  const deeperAvailable = !sameLevel.length && candidates.some(b=>b.level>levelNum);
+  const deeperAvailable = !sameLevel.length && candidates.some(b=>b.level>level);
 
   view().innerHTML = `
-    <div class="back" id="backBtn">← 重测水平</div>
+    <button class="back" id="backBtn">← 重测水平</button>
     <div style="margin-bottom:16px">
-      <span style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun','FangSong',serif;font-size:21px;font-weight:700;letter-spacing:.04em">${p.name}</span>
-      <span class="level-badge l${levelNum}">${levelLabel(level)}</span>
+      <span style="font-family:'Noto Serif SC','Songti SC','STSong','SimSun','FangSong',serif;font-size:21px;font-weight:700;letter-spacing:.06em">${p.name}</span>
+      <span class="level-badge l${level}">${LV[level]}</span>
     </div>
-    ${nextBook ? renderBookCard(nextBook, p.color) : renderAllDone(levelNum, deeperAvailable)}
+    ${nextBook ? renderCard(nextBook, spin) : renderDone(level, deeperAvailable)}
   `;
 
   if(nextBook){
-    document.getElementById('markReadBtn').onclick=()=>{
-      if(!ST.readIds.includes(nextBook.id)) ST.readIds.push(nextBook.id);
-      ST.awaitingPace = true;
-      save();render();window.scrollTo(0,0);
-    };
-    document.getElementById('skipBtn').onclick=()=>{
-      if(!ST.readIds.includes(nextBook.id)) ST.readIds.push(nextBook.id);
-      save();render();window.scrollTo(0,0);
-    };
+    document.getElementById('markReadBtn').onclick=()=>{markAndPace(nextBook.id);};
+    document.getElementById('skipBtn').onclick=()=>{markAndPace(nextBook.id);};
   }
   if(deeperAvailable && !nextBook){
     const btn = document.getElementById('goDeeperBtn');
     if(btn) btn.onclick=()=>{
-      ST.levels[currentPath] = {1:'入门',2:'进阶',3:'深耕'}[Math.min(levelNum+1,3)];
+      ST.levels[currentPath] = Math.min(level+1, 4);
       save();render();
     };
   }
   document.getElementById('backBtn').onclick=()=>{currentView='assess';render();};
 }
 
-function renderBookCard(b, color){
-  const diffStars = {1:'入门',2:'进阶',3:'深耕'}[b.level]||'';
-  return `
-    <div class="result-card">
-      <div class="result-strip" style="background:${color}"></div>
-      <div class="result-body">
-        <h2>${b.title}</h2>
-        <div class="meta">${b.author} · ${diffStars}</div>
-        <div class="reason" style="border-left-color:${color}">${b.reason}</div>
-        <div class="result-acts">
-          <button class="btn btn-primary" id="markReadBtn">读过了，标记已读</button>
-          <button class="btn btn-outline" id="skipBtn">跳过这本</button>
-        </div>
+function markAndPace(id){
+  if(!ST.readIds.includes(id)) ST.readIds.push(id);
+  ST.awaitingPace = true;
+  save();render();window.scrollTo(0,0);
+}
+
+function renderCard(b, color){
+  const diffLabel = LV[b.level]||'';
+  return `<div class="result-card">
+    <div class="result-strip" style="background:${color}"></div>
+    <div class="result-body">
+      <h2>${b.title}</h2>
+      <div class="meta">${b.author} · ${diffLabel}</div>
+      <div class="reason" style="border-left-color:${color}">${b.reason}</div>
+      <div class="result-acts">
+        <button class="btn btn-primary" id="markReadBtn">读过了，标记已读</button>
+        <button class="btn btn-outline" id="skipBtn">跳过这本</button>
       </div>
     </div>
-  `;
+  </div>`;
 }
 
-function renderAllDone(levelNum, deeperAvailable){
+function renderDone(level, deeperAvailable){
   if(deeperAvailable){
-    return `
-      <div class="done-msg"><div class="icon">📚</div>
-        <p>当前阶段的书你都读完了。<br>要不要挑战更深的？</p>
-        <button class="btn btn-primary" id="goDeeperBtn" style="margin-top:16px">我想读更深的 →</button>
-      </div>`;
+    return `<div class="done-msg"><div class="icon">📚</div><p>当前阶段的书你都读完了。<br>要不要挑战更深的？</p><button class="btn btn-primary" id="goDeeperBtn" style="margin-top:16px">我想读更深的 →</button></div>`;
   }
-  return `
-    <div class="done-msg"><div class="icon">🎉</div>
-      <p>这条路径上的书你全部读完了。<br>好样的。</p>
-    </div>`;
-}
-
-// ---- 工具 ----
-function levelLabel(l){return {入门:'入门',进阶:'进阶',深耕:'深耕'}[l]||l;}
-function toast(m){
-  const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');
-  clearTimeout(t._tid);t._tid=setTimeout(()=>t.classList.remove('show'),1800);
+  return `<div class="done-msg"><div class="icon">🎉</div><p>这条路径上的书你全部读完了。<br>好样的。</p></div>`;
 }
 
 render();
